@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Política de Privacidade - BenoVet">
+  <meta name="theme-color" content="#0B0F17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="frontend/assets/symbol-benovet.png">
+  <title>Política de Privacidade - BenoVet</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0B0F17;
+      font-family: "Public Sans", system-ui, sans-serif;
+      color: #fff;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 10px;
+      background: rgba(11, 15, 23, 0.98);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 194, 255, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .navbar-symbol {
+      width: 35px;
+      height: 52px;
+    }
+
+    .navbar-symbol img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .privacy-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 16px 60px;
+    }
+
+    .privacy-header {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .privacy-header h1 {
+      font: 700 36px/1.2 "Space Grotesk", sans-serif;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #00C2FF, #7B00FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .privacy-header p {
+      font: 400 16px/1.6 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .privacy-section {
+      margin-bottom: 40px;
+    }
+
+    .privacy-section h2 {
+      font: 700 24px/1.3 "Space Grotesk", sans-serif;
+      color: #00C2FF;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0, 194, 255, 0.2);
+    }
+
+    .privacy-section h3 {
+      font: 700 16px/1.3 "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    .privacy-section p {
+      font: 400 15px/1.8 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 12px;
+    }
+
+    .privacy-section ul,
+    .privacy-section ol {
+      margin-left: 24px;
+      margin-bottom: 12px;
+    }
+
+    .privacy-section li {
+      font: 400 15px/1.8 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 8px;
+    }
+
+    .privacy-highlight {
+      background: rgba(0, 194, 255, 0.1);
+      border-left: 3px solid #00C2FF;
+      padding: 16px;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+
+    .privacy-highlight p {
+      margin-bottom: 0;
+    }
+
+    .footer-link {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(0, 194, 255, 0.1);
+      margin-top: 40px;
+    }
+
+    .footer-link a {
+      color: #00C2FF;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link a:hover {
+      color: #33D0FF;
+    }
+
+    @media (min-width: 768px) {
+      .navbar {
+        padding: 16px 40px;
+      }
+
+      .privacy-container {
+        padding: 100px 40px 60px;
+      }
+
+      .privacy-header h1 {
+        font-size: 42px;
+      }
+
+      .privacy-header p {
+        font-size: 18px;
+      }
+
+      .privacy-section h2 {
+        font-size: 28px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .navbar {
+        padding: 20px 64px;
+      }
+
+      .privacy-container {
+        padding: 100px 64px 60px;
+      }
+
+      .privacy-header h1 {
+        font-size: 48px;
+      }
+
+      .privacy-section h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <div class="navbar-symbol">
+        <img src="frontend/assets/symbol-benovet.png" alt="BenoVet">
+      </div>
+    </a>
+  </nav>
+
+  <div class="privacy-container">
+    <div class="privacy-header">
+      <h1>Política de Privacidade</h1>
+      <p>Última atualização: Agosto de 2026</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>1. Introdução</h2>
+      <p>
+        A BenoVet ("nós", "nosso" ou "nossa") opera o site www.benovet.com.br. Esta página informa você sobre nossas políticas com relação à coleta, uso e divulgação de dados pessoais quando você utiliza nosso site e as opções que você possui associadas a esses dados.
+      </p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>2. Informações que Coletamos</h2>
+      <p>Coletamos informações que você nos fornece diretamente através do formulário de contato "Fale Conosco", incluindo:</p>
+      <ul>
+        <li><strong>Nome completo</strong> - Para identificação e comunicação</li>
+        <li><strong>Endereço de email</strong> - Para envio de respostas e informações</li>
+        <li><strong>Número de telefone</strong> - Para contato direto</li>
+        <li><strong>Mensagem</strong> - Seu pedido, dúvida ou comentário</li>
+      </ul>
+    </div>
+
+    <div class="privacy-section">
+      <h2>3. Como Usamos Seus Dados</h2>
+      <p>Usamos os dados coletados para:</p>
+      <ul>
+        <li>Responder a suas mensagens e dúvidas</li>
+        <li>Fornecer informações sobre nossos produtos e serviços</li>
+        <li>Melhorar nosso site e atendimento</li>
+        <li>Manter contato com você conforme solicitado</li>
+        <li>Cumprir obrigações legais</li>
+      </ul>
+    </div>
+
+    <div class="privacy-section">
+      <h2>4. Armazenamento de Dados</h2>
+      <p>
+        Seus dados são armazenados de forma segura através do Formspree (https://formspree.io), um serviço terceirizado que funciona como intermediário entre você e nós. O Formspree:
+      </p>
+      <ul>
+        <li>Não armazena permanentemente seus dados</li>
+        <li>Envia suas mensagens diretamente para nosso email</li>
+        <li>Utiliza criptografia HTTPS para proteger seus dados em trânsito</li>
+        <li>Está em conformidade com padrões internacionais de segurança</li>
+      </ul>
+    </div>
+
+    <div class="privacy-section">
+      <h2>5. Proteção de Dados</h2>
+      <p>Implementamos medidas de segurança incluindo:</p>
+      <ul>
+        <li><strong>HTTPS/SSL</strong> - Criptografia end-to-end</li>
+        <li><strong>Validação de Dados</strong> - Verificação de formato e conteúdo</li>
+        <li><strong>Sanitização</strong> - Remoção de código malicioso</li>
+        <li><strong>reCAPTCHA v3</strong> - Proteção contra bots e spam</li>
+        <li><strong>Rate Limiting</strong> - Limite de 1 envio por minuto</li>
+      </ul>
+    </div>
+
+    <div class="privacy-section">
+      <h2>6. Retenção de Dados</h2>
+      <p>
+        Retenemos seus dados pessoais apenas pelo tempo necessário para responder sua solicitação. Após respondermos seu contato, seus dados podem ser mantidos por até 90 dias para fins de registro, após o qual serão deletados.
+      </p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>7. Seus Direitos (LGPD)</h2>
+      <p>
+        De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem o direito de:
+      </p>
+      <ul>
+        <li>Acessar seus dados pessoais</li>
+        <li>Corrigir dados imprecisos</li>
+        <li>Solicitar a exclusão de seus dados</li>
+        <li>Revogar seu consentimento</li>
+        <li>Portabilidade de dados</li>
+      </ul>
+      <p>
+        Para exercer qualquer um desses direitos, entre em contato conosco através de: <strong>alan@benovet.com.br</strong>
+      </p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>8. Cookies</h2>
+      <p>
+        Nosso site utiliza apenas cookies essenciais para funcionamento básico. Não utilizamos cookies de rastreamento ou publicidade sem seu consentimento explícito.
+      </p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>9. Links Externos</h2>
+      <p>
+        Nosso site pode conter links para sites terceiros. Não somos responsáveis pelas políticas de privacidade desses sites. Recomendamos que você leia suas políticas de privacidade.
+      </p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>10. Alterações nesta Política</h2>
+      <p>
+        Podemos atualizar esta Política de Privacidade periodicamente. Qualquer mudança será postada nesta página com a data de atualização. Seu uso contínuo do site após essas mudanças constitui sua aceitação da nova política.
+      </p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>11. Contato</h2>
+      <p>
+        Se você tiver dúvidas sobre esta Política de Privacidade ou sobre como tratamos seus dados pessoais, entre em contato conosco:
+      </p>
+      <div class="privacy-highlight">
+        <p><strong>BenoVet</strong></p>
+        <p>Email: alan@benovet.com.br</p>
+        <p>Telefone: (45) 99834-6513</p>
+        <p>Endereço: Rua Paulo Wagner, 449 - Maripá, PR 85955-312</p>
+      </div>
+    </div>
+
+    <div class="footer-link">
+      <a href="/">← Voltar para o site</a>
+    </div>
+  </div>
+</body>
+</html>

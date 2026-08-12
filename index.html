@@ -1698,6 +1698,11 @@
       <a href="mailto:alan@benovet.com.br">alan@benovet.com.br</a>
       <p>WhatsApp: (45) 99834-6513</p>
     </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <a href="/privacy.html">Política de Privacidade</a>
+      <a href="/terms.html">Termos de Uso</a>
+    </div>
   </footer>
 
   <script>
@@ -1712,51 +1717,177 @@
     });
   </script>
 
+  <script src="https://www.google.com/recaptcha/api.js"></script>
   <script>
-    // Formspree Contact Form
-    const contactForm = document.getElementById('my-form');
-    const contactStatus = document.getElementById('contact-status');
+    // Contact Form Security Module
+    class ContactFormSecurity {
+      constructor() {
+        this.siteKey = '6LeLeoItAAAAAPjN6vVntslE3hnL8jxu0XpjVi-j';
+        this.lastSubmitTime = 0;
+        this.submitCooldown = 60000; // 60 segundos entre envios
+        this.form = document.getElementById('my-form');
+        this.status = document.getElementById('contact-status');
+        this.button = this.form.querySelector('button');
+        this.init();
+      }
 
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      init() {
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+      }
 
-      const formData = new FormData(contactForm);
-      const button = contactForm.querySelector('button');
-      button.disabled = true;
-      button.textContent = 'Enviando...';
+      // Sanitizar input (remover código malicioso)
+      sanitize(input) {
+        const div = document.createElement('div');
+        div.textContent = input;
+        return div.innerHTML;
+      }
 
-      try {
-        const response = await fetch('https://formspree.io/f/mqpzbenr', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
+      // Validar email
+      validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      }
 
-        if (response.ok) {
-          contactStatus.textContent = '✓ Mensagem enviada com sucesso! Entraremos em contato em breve.';
-          contactStatus.className = 'contact-status success';
-          contactForm.reset();
-          button.textContent = 'Enviar Mensagem';
-          button.disabled = false;
+      // Validar telefone (apenas números e caracteres permitidos)
+      validatePhone(phone) {
+        const cleaned = phone.replace(/\D/g, '');
+        return cleaned.length >= 10 && cleaned.length <= 15;
+      }
 
-          setTimeout(() => {
-            contactStatus.className = 'contact-status';
-          }, 5000);
-        } else {
-          throw new Error('Erro ao enviar');
+      // Validar nome (sem caracteres suspeitos)
+      validateName(name) {
+        const regex = /^[a-záéíóúãõçA-ZÁÉÍÓÚÃÕÇ\s]{3,100}$/;
+        return regex.test(name);
+      }
+
+      // Validar mensagem
+      validateMessage(message) {
+        return message.trim().length >= 10 && message.trim().length <= 1000;
+      }
+
+      // Rate limiting
+      checkRateLimit() {
+        const now = Date.now();
+        if (now - this.lastSubmitTime < this.submitCooldown) {
+          const segundosRestantes = Math.ceil((this.submitCooldown - (now - this.lastSubmitTime)) / 1000);
+          this.showError(`Aguarde ${segundosRestantes}s antes de enviar novamente`);
+          return false;
         }
-      } catch (error) {
-        contactStatus.textContent = '✗ Erro ao enviar mensagem. Tente novamente.';
-        contactStatus.className = 'contact-status error';
-        button.textContent = 'Enviar Mensagem';
-        button.disabled = false;
+        this.lastSubmitTime = now;
+        return true;
+      }
 
+      // Mostrar erro
+      showError(message) {
+        this.status.textContent = '✗ ' + message;
+        this.status.className = 'contact-status error';
         setTimeout(() => {
-          contactStatus.className = 'contact-status';
+          this.status.className = 'contact-status';
         }, 5000);
       }
+
+      // Mostrar sucesso
+      showSuccess(message) {
+        this.status.textContent = '✓ ' + message;
+        this.status.className = 'contact-status success';
+        setTimeout(() => {
+          this.status.className = 'contact-status';
+        }, 5000);
+      }
+
+      // Validar formulário
+      validateForm(data) {
+        // Validar nome
+        if (!this.validateName(data.get('name'))) {
+          this.showError('Nome inválido (3-100 caracteres, apenas letras)');
+          return false;
+        }
+
+        // Validar email
+        if (!this.validateEmail(data.get('email'))) {
+          this.showError('Email inválido');
+          return false;
+        }
+
+        // Validar telefone
+        if (!this.validatePhone(data.get('phone'))) {
+          this.showError('Telefone inválido (10-15 dígitos)');
+          return false;
+        }
+
+        // Validar mensagem
+        if (!this.validateMessage(data.get('message'))) {
+          this.showError('Mensagem deve ter entre 10 e 1000 caracteres');
+          return false;
+        }
+
+        return true;
+      }
+
+      // Sanitizar dados
+      sanitizeFormData(data) {
+        const sanitized = new FormData();
+        sanitized.append('name', this.sanitize(data.get('name')));
+        sanitized.append('email', this.sanitize(data.get('email')));
+        sanitized.append('phone', this.sanitize(data.get('phone')));
+        sanitized.append('message', this.sanitize(data.get('message')));
+        return sanitized;
+      }
+
+      // Enviar formulário
+      async handleSubmit(e) {
+        e.preventDefault();
+
+        // Rate limiting
+        if (!this.checkRateLimit()) {
+          return;
+        }
+
+        const formData = new FormData(this.form);
+
+        // Validar dados
+        if (!this.validateForm(formData)) {
+          return;
+        }
+
+        // Sanitizar dados
+        const sanitized = this.sanitizeFormData(formData);
+
+        this.button.disabled = true;
+        this.button.textContent = 'Enviando...';
+
+        try {
+          // Obter token reCAPTCHA v3
+          const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+          sanitized.append('g-recaptcha-response', token);
+
+          const response = await fetch('https://formspree.io/f/mqpzbenr', {
+            method: 'POST',
+            body: sanitized,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            this.showSuccess('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.form.reset();
+            this.button.textContent = 'Enviar Mensagem';
+            this.button.disabled = false;
+          } else {
+            throw new Error('Erro ao enviar');
+          }
+        } catch (error) {
+          this.showError('Erro ao enviar mensagem. Tente novamente.');
+          this.button.textContent = 'Enviar Mensagem';
+          this.button.disabled = false;
+        }
+      }
+    }
+
+    // Inicializar formulário quando o DOM estiver pronto
+    document.addEventListener('DOMContentLoaded', () => {
+      new ContactFormSecurity();
     });
   </script>
 
