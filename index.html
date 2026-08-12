@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BenoVet - Soluções veterinárias com tecnologia e inovação.">
+  <meta name="theme-color" content="#0B0F17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="frontend/assets/symbol-benovet.png">
+  <title>BenoVet - Ciência, Saúde, Resultados</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: #0B0F17;
+      font-family: "Public Sans", system-ui, sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+
+    @keyframes glow-pulse {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(0, 194, 255, 0.6)) drop-shadow(0 0 30px rgba(123, 0, 255, 0.3)); }
+      50% { filter: drop-shadow(0 0 25px rgba(0, 194, 255, 1)) drop-shadow(0 0 50px rgba(123, 0, 255, 0.6)); }
+    }
+
+    @keyframes float-smooth {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dna-particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      z-index: 2;
+    }
+
+    .dna-particle-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+      z-index: 1;
+    }
+
+    .dna-particle-image.visible {
+      opacity: 1;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 12px;
+      background: rgba(11, 15, 23, 0.98);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 194, 255, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      gap: 6px;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .navbar-symbol {
+      width: 40px;
+      height: 60px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar-symbol img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .strand-left-nav {
+      position: absolute;
+      left: 5px;
+      width: 8px;
+      height: 60px;
+      background: linear-gradient(180deg, rgba(0, 194, 255, 0.2), rgba(0, 194, 255, 1));
+      border-radius: 4px;
+      animation: build-strand-left 4s ease-in-out infinite;
+    }
+
+    .strand-right-nav {
+      position: absolute;
+      right: 5px;
+      width: 8px;
+      height: 60px;
+      background: linear-gradient(180deg, rgba(123, 0, 255, 0.2), rgba(123, 0, 255, 1));
+      border-radius: 4px;
+      animation: build-strand-right 4s ease-in-out infinite;
+    }
+
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+      gap: 8px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      flex: 1;
+      justify-content: center;
+    }
+
+    .navbar-menu a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .navbar-menu a:active {
+      color: #00C2FF;
+    }
+
+    .navbar-cta {
+      background: #00C2FF;
+      color: #0B0F17;
+      font: 600 9px/1.2 "Public Sans", sans-serif;
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      flex-shrink: 0;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 50px;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("frontend/assets/hero-animals.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      opacity: 1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(11, 15, 23, 0.70) 0%, rgba(11, 15, 23, 0.40) 40%, rgba(11, 15, 23, 0.05) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 100%;
+      text-align: left;
+      animation: fade-in-up 0.8s ease 0.2s both;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid rgba(0, 194, 255, 0.5);
+      color: #00C2FF;
+      font: 700 8px/1 "Space Grotesk", sans-serif;
+      padding: 4px 8px;
+      border-radius: 12px;
+      width: fit-content;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font: 700 26px/1.1 "Space Grotesk", sans-serif;
+      color: #fff;
+      margin: 0;
+    }
+
+    .hero-subtitle {
+      font: 400 12px/1.5 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+      width: 100%;
+    }
+
+    /* MOBILE LOCKED - DO NOT MODIFY */
+    .btn {
+      font: 600 12px/1.3 "Public Sans", sans-serif;
+      padding: 12px 18px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      white-space: normal;
+      text-align: center;
+      width: 100%;
+      min-height: 44px;
+    }
+    /* END MOBILE LOCKED */
+
+    .btn-primary {
+      background: #00C2FF;
+      color: #0B0F17;
+      font-weight: 700;
+    }
+
+    .btn-secondary {
+      border: 1.5px solid rgba(0, 194, 255, 0.5);
+      color: #00C2FF;
+      background: transparent;
+    }
+
+    /* About Section */
+    .about {
+      padding: 30px 12px;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(11, 15, 23, 0.98) 0%, rgba(17, 24, 38, 0.8) 100%);
+      width: 100%;
+    }
+
+    .logo-container {
+      position: relative;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .logo-text {
+      position: absolute;
+      font: 700 96px/1 "Space Grotesk", sans-serif;
+      letter-spacing: -0.02em;
+      color: rgba(255, 255, 255, 0.12);
+      z-index: 0;
+      white-space: nowrap;
+    }
+
+    .logo-text .cyan {
+      color: rgba(0, 194, 255, 0.15);
+    }
+
+    .logo-subtext {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.08);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-top: 12px;
+      white-space: nowrap;
+    }
+
+    .logo-subtext .registered {
+      font-size: 16px;
+      vertical-align: super;
+      margin-left: 4px;
+    }
+
+    .logo-symbol {
+      width: 140px;
+      height: 210px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-symbol img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .strand-left-logo {
+      position: absolute;
+      left: 20px;
+      width: 20px;
+      background: linear-gradient(180deg, rgba(0, 194, 255, 0.2), rgba(0, 194, 255, 1));
+      border-radius: 10px;
+      animation: build-strand-left 6s ease-in-out infinite;
+    }
+
+    .strand-right-logo {
+      position: absolute;
+      right: 20px;
+      width: 20px;
+      background: linear-gradient(180deg, rgba(123, 0, 255, 0.2), rgba(123, 0, 255, 1));
+      border-radius: 10px;
+      animation: build-strand-right 6s ease-in-out infinite;
+    }
+
+    .rungs-container {
+      position: absolute;
+      width: 80px;
+      height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .rung {
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(0, 194, 255, 0.6), rgba(123, 0, 255, 0.6));
+      border-radius: 2px;
+      animation: build-rungs 6s ease-in-out infinite;
+    }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .about-title {
+      font: 700 22px/1.2 "Space Grotesk", sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    .about-text p {
+      font: 400 12px/1.6 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.75);
+      text-align: center;
+    }
+
+    /* Founders */
+    .founders {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .founder-card {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid rgba(0, 194, 255, 0.15);
+      border-radius: 8px;
+      background: rgba(17, 24, 38, 0.5);
+      align-items: flex-start;
+    }
+
+    .founder-photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border: 1px solid rgba(0, 194, 255, 0.2);
+    }
+
+    .founder-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .founder-info h3 {
+      font: 700 15px/1.1 "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-bottom: 0;
+    }
+
+    .founder-role {
+      font: 700 9px/1 "Space Grotesk", sans-serif;
+      color: #00C2FF;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .founder-bio {
+      font: 400 12px/1.4 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 4px;
+    }
+
+    .founder-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font: 400 11px/1.2 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .founder-contact a {
+      color: #00C2FF;
+      text-decoration: none;
+    }
+
+    /* Mission & Vision */
+    .mission-vision {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .mv-card {
+      padding: 16px;
+      border: 1px solid rgba(0, 194, 255, 0.15);
+      border-radius: 6px;
+      background: rgba(17, 24, 38, 0.5);
+    }
+
+    .mv-card h3 {
+      font: 700 13px/1.1 "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .mv-card p {
+      font: 400 11px/1.5 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* Values */
+    .values {
+      padding: 0;
+      margin-top: 30px;
+    }
+
+    .values-title {
+      font: 700 24px/1.2 "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .values-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .value-card {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(17, 24, 38, 0.6);
+      border: 1px solid rgba(0, 194, 255, 0.1);
+    }
+
+    .value-card h4 {
+      font: 700 14px/1.2 "Space Grotesk", sans-serif;
+      color: #00C2FF;
+    }
+
+    .value-card p {
+      font: 400 12px/1.5 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* Pets Section */
+    .pets-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 30px;
+      overflow: hidden;
+    }
+
+    .pets-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("frontend/assets/pets-section.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      opacity: 1;
+    }
+
+    .pets-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(11, 15, 23, 0.70) 0%, rgba(11, 15, 23, 0.40) 40%, rgba(11, 15, 23, 0.05) 100%);
+      z-index: 1;
+    }
+
+    .pets-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 100%;
+      text-align: left;
+      animation: fade-in-up 0.8s ease 0.2s both;
+    }
+
+    .pets-label {
+      font: 700 8px/1 "Space Grotesk", sans-serif;
+      letter-spacing: 0.1em;
+      color: #00C2FF;
+      text-transform: uppercase;
+    }
+
+    .pets-title {
+      font: 700 26px/1.1 "Space Grotesk", sans-serif;
+      color: #fff;
+    }
+
+    .pets-desc {
+      font: 400 12px/1.5 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Products Section */
+    .products {
+      padding: 30px 12px;
+      position: relative;
+      z-index: 1;
+      background: rgba(11, 15, 23, 0.98);
+      width: 100%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .section-header h2 {
+      font: 700 22px/1.1 "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      font: 400 12px/1.4 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .products-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .product-card {
+      border: 1px solid rgba(0, 194, 255, 0.1);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: rgba(17, 24, 38, 0.6);
+    }
+
+    .product-image {
+      height: 110px;
+      background: linear-gradient(135deg, rgba(0, 194, 255, 0.1), rgba(123, 0, 255, 0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 500 9px ui-monospace, monospace;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .product-info {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-name {
+      font: 600 12px/1.1 "Public Sans", sans-serif;
+      color: #fff;
+    }
+
+    .product-desc {
+      font: 400 10px/1.2 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .product-price {
+      font: 600 12px/1 "Public Sans", sans-serif;
+      color: #00C2FF;
+    }
+
+    .product-link {
+      font: 600 9px/1 "Space Grotesk", sans-serif;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 24px 12px;
+      position: relative;
+      z-index: 1;
+      background: rgba(11, 15, 23, 0.98);
+      width: 100%;
+    }
+
+    .cta-box {
+      padding: 24px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 194, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: rgba(17, 24, 38, 0.5);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("frontend/assets/products-bg.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.40;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-content h2 {
+      font: 700 20px/1.2 "Space Grotesk", sans-serif;
+      color: #fff;
+    }
+
+    .cta-content p {
+      font: 400 12px/1.4 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .cta-button {
+      background: #00C2FF;
+      color: #0B0F17;
+      font: 700 11px/1 "Space Grotesk", sans-serif;
+      padding: 9px 14px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 28px 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 1;
+      background: rgba(11, 15, 23, 0.95);
+      width: 100%;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-logo {
+      max-width: 100px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-section h3 {
+      font: 700 10px/1 "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-bottom: 6px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      font: 400 11px/1.5 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .footer-section a {
+      color: #00C2FF;
+      text-decoration: none;
+    }
+
+    /* TABLET - 768px+ */
+    @media (max-width: 767px) {
+      .navbar {
+        padding: 12px 10px;
+        gap: 6px;
+        min-height: 56px;
+        align-items: center;
+      }
+
+      .navbar-symbol {
+        width: 35px;
+        height: 52px;
+        flex-shrink: 0;
+      }
+
+      .navbar-menu {
+        gap: 8px;
+        font-size: 10px;
+        flex: 1;
+      }
+
+      .navbar-cta {
+        font-size: 9px;
+        padding: 8px 14px;
+        flex-shrink: 0;
+        white-space: nowrap;
+        height: fit-content;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .navbar {
+        padding: 16px 40px;
+      }
+
+      .navbar-symbol {
+        width: 90px;
+        height: 135px;
+      }
+
+      .navbar-menu {
+        gap: 40px;
+        font-size: 14px;
+      }
+
+      .navbar-cta {
+        font-size: 13px;
+        padding: 10px 20px;
+      }
+
+      .hero {
+        padding-top: 60px;
+        align-items: flex-start;
+      }
+
+      .hero-content {
+        padding: 40px;
+        max-width: 55%;
+      }
+
+      .hero-title {
+        font-size: 38px;
+      }
+
+      .hero-subtitle {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: row;
+        gap: 14px;
+      }
+
+      .btn {
+        width: auto;
+      }
+
+      .about {
+        padding: 60px 40px;
+      }
+
+      .logo-container {
+        height: 320px;
+        margin-bottom: 40px;
+      }
+
+      .logo-symbol {
+        width: 180px;
+        height: 270px;
+      }
+
+      .logo-text {
+        font-size: 120px;
+        color: rgba(255, 255, 255, 0.12);
+      }
+
+      .logo-text .cyan {
+        color: rgba(0, 194, 255, 0.15);
+      }
+
+      .logo-subtext {
+        font-size: 22px;
+        margin-top: 14px;
+      }
+
+      .logo-subtext .registered {
+        font-size: 18px;
+      }
+
+      .about-title {
+        font-size: 30px;
+      }
+
+      .about-text {
+        text-align: left;
+      }
+
+      .about-text p {
+        font-size: 14px;
+        text-align: left;
+      }
+
+      .founders {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .founder-card {
+        grid-template-columns: 90px 1fr;
+        gap: 16px;
+        padding: 20px;
+      }
+
+      .founder-photo {
+        width: 90px;
+        height: 90px;
+      }
+
+      .founder-info h3 {
+        font-size: 17px;
+      }
+
+      .founder-role {
+        font-size: 10px;
+      }
+
+      .founder-bio {
+        font-size: 13px;
+      }
+
+      .founder-contact {
+        font-size: 12px;
+      }
+
+      .mission-vision {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .values-title {
+        font-size: 28px;
+        margin-bottom: 28px;
+      }
+
+      .value-card {
+        padding: 18px;
+        gap: 8px;
+      }
+
+      .value-card h4 {
+        font-size: 15px;
+      }
+
+      .value-card p {
+        font-size: 13px;
+      }
+
+      .pets-section {
+        padding-top: 60px;
+        align-items: flex-start;
+      }
+
+      .pets-content {
+        padding: 40px;
+        max-width: 55%;
+        margin-left: 0;
+      }
+
+      .pets-title {
+        font-size: 38px;
+      }
+
+      .pets-desc {
+        font-size: 15px;
+      }
+
+      .products {
+        padding: 60px 40px;
+      }
+
+      .section-header h2 {
+        font-size: 30px;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .footer {
+        flex-direction: row;
+        gap: 50px;
+        padding: 50px 40px;
+        align-items: flex-start;
+        text-align: left;
+        justify-content: center;
+      }
+    }
+
+    /* DESKTOP - 1024px+ */
+    @media (min-width: 1024px) {
+      .navbar {
+        padding: 20px 64px;
+      }
+
+      .navbar-symbol {
+        width: 130px;
+        height: 195px;
+      }
+
+      .navbar-menu {
+        gap: 50px;
+        font-size: 16px;
+      }
+
+      .navbar-cta {
+        font-size: 14px;
+        padding: 12px 28px;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-content {
+        padding: 60px 64px;
+        max-width: 52%;
+      }
+
+      .hero-title {
+        font-size: 56px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .about {
+        padding: 100px 64px;
+      }
+
+      .logo-container {
+        height: 420px;
+        margin-bottom: 60px;
+      }
+
+      .logo-symbol {
+        width: 220px;
+        height: 330px;
+      }
+
+      .logo-text {
+        font-size: 180px;
+        color: rgba(255, 255, 255, 0.14);
+      }
+
+      .logo-text .cyan {
+        color: rgba(0, 194, 255, 0.18);
+      }
+
+      .logo-subtext {
+        font-size: 28px;
+        margin-top: 20px;
+      }
+
+      .logo-subtext .registered {
+        font-size: 24px;
+      }
+
+      .about-title {
+        font-size: 42px;
+        margin-bottom: 28px;
+      }
+
+      .about-text {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .about-text p {
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+
+      .founders {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 50px;
+      }
+
+      .founder-card {
+        grid-template-columns: 140px 1fr;
+        gap: 28px;
+        padding: 32px;
+      }
+
+      .founder-photo {
+        width: 140px;
+        height: 140px;
+      }
+
+      .founder-info h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      .founder-role {
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+
+      .founder-bio {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .founder-contact {
+        font-size: 14px;
+        margin-top: 12px;
+      }
+
+      .mission-vision {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .values {
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .values-title {
+        font-size: 40px;
+        margin-bottom: 40px;
+      }
+
+      .values-grid {
+        gap: 24px;
+      }
+
+      .value-card {
+        padding: 28px;
+        gap: 12px;
+      }
+
+      .value-card h4 {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .value-card p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .pets-section {
+        padding-top: 80px;
+        align-items: flex-start;
+      }
+
+      .pets-content {
+        padding: 70px 64px;
+        max-width: 52%;
+        margin-left: 0;
+      }
+
+      .pets-title {
+        font-size: 54px;
+        margin-bottom: 18px;
+      }
+
+      .pets-desc {
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .products {
+        padding: 100px 64px;
+      }
+
+      .section-header h2 {
+        font-size: 42px;
+        margin-bottom: 50px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+      }
+
+      .cta-section {
+        padding: 0 64px 100px;
+      }
+
+      .cta-box {
+        padding: 56px 80px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+      }
+
+      .cta-content h2 {
+        font-size: 32px;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .cta-content p {
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .cta-button {
+        font-size: 15px;
+        padding: 16px 32px;
+        min-height: 50px;
+      }
+
+      .footer {
+        padding: 100px 64px;
+        gap: 100px;
+        align-items: flex-start;
+        text-align: left;
+        justify-content: center;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        max-width: 140px;
+      }
+
+      .footer-section h3 {
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-symbol">
+        <img src="frontend/assets/symbol-benovet.png" alt="BenoVet">
+      </div>
+    </div>
+    <ul class="navbar-menu">
+      <li><a href="#sobre">Quem Somos</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button type="button" class="navbar-cta" onclick="window.location.href='#comprar'">Comprar na loja</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">CIÊNCIA · SAÚDE · RESULTADOS</div>
+      <h1 class="hero-title">Saúde animal com padrão científico</h1>
+      <p class="hero-subtitle">Tecnologia genética e nutricional aplicada à produtividade e ao bem-estar de suínos, bovinos e equinos. Conheça a linha e finalize sua compra em nossa loja oficial.</p>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='#comprar'">Ver loja completa →</button>
+        <a href="#produtos" class="btn btn-secondary">Conhecer produtos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="sobre">
+    <div class="logo-container">
+      <div class="logo-symbol">
+        <img src="frontend/assets/symbol-benovet.png" alt="BenoVet Símbolo">
+      </div>
+      <div class="logo-text">
+        <span>Beno</span><span class="cyan">Vet</span>
+        <div class="logo-subtext">Uma empresa do grup BENOGUST <span class="registered">®</span></div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <h2 class="about-title">Ciência e gestão a serviço do cuidado animal</h2>
+      <p>A BenoVet nasceu da união de dois profissionais com experiências complementares e um propósito em comum: contribuir para uma relação mais saudável, responsável e consciente entre as pessoas e seus animais.</p>
+      <p>Essa combinação nos permite enxergar o cuidado animal de forma ampla, unindo conhecimento técnico, qualidade, responsabilidade e inovação.</p>
+    </div>
+
+    <!-- Founders -->
+    <div class="founders">
+      <div class="founder-card">
+        <img src="frontend/assets/alan-deluan-gust.png" alt="Alan" class="founder-photo">
+        <div>
+          <h3>Alan Deluan Gust</h3>
+          <div class="founder-role">CEO — Chief Executive Officer</div>
+          <p class="founder-bio">Engenheiro Agrícola e Civil. Traz experiência em gestão, planejamento, inovação e desenvolvimento, vindas de experiências em multinacionais como State Grid Group (China), relacionamentos com Mtsui Group (Japão) e Isquared Capital (EUA), em empresas como Origo Energy e CPFL Energy - Infrastructure Coordination Department.<br><br><strong>CREA:</strong> 1720706140/V - GO, 355743 - MG, 5071102423 - SP, 364673 - CE, 201128 - PR, 2023103741 - RJ, 20706140 - PE, 43678 – MS, 330660 – TO, 33228 – PB, 197326-1 – SC, 143431 – MA, 963200 – PA, 473640524 – RN, 3000157467 – BA, 52960 – SE, 57313 – MT</p>
+          <div class="founder-contact">
+            <a href="mailto:alan@benovet.com.br">alan@benovet.com.br</a>
+            <div>(45) 99834-6513</div>
+          </div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <img src="frontend/assets/taina-vinicius-benovit.png" alt="Tainã" class="founder-photo">
+        <div>
+          <h3>Tainã Vinicius Benovit</h3>
+          <div class="founder-role">COO — Chief Operating Officer</div>
+          <p class="founder-bio">Médico-Veterinário. Responsável pelo conhecimento técnico e pela visão voltada à saúde animal.</p>
+          <div class="founder-contact">
+            <a href="mailto:taina@benovet.com.br">taina@benovet.com.br</a>
+            <div>(44) 99756-8684</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="mission-vision">
+      <div class="mv-card">
+        <h3>Nossa Missão</h3>
+        <p>Oferecer produtos e soluções de qualidade para a saúde e o bem-estar animal, proporcionando aos nossos clientes confiança, informação e segurança.</p>
+      </div>
+      <div class="mv-card">
+        <h3>Nossa Visão</h3>
+        <p>Ser uma empresa reconhecida pela qualidade, credibilidade e inovação no mercado de saúde animal.</p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="values">
+      <h3 class="values-title">Nossos Valores</h3>
+      <div class="values-grid">
+        <div class="value-card">
+          <h4>Responsabilidade</h4>
+          <p>Tratamos a saúde animal com seriedade e respeito.</p>
+        </div>
+        <div class="value-card">
+          <h4>Qualidade</h4>
+          <p>Buscamos produtos que atendam aos mais altos padrões.</p>
+        </div>
+        <div class="value-card">
+          <h4>Conhecimento</h4>
+          <p>Boas decisões começam com informação adequada.</p>
+        </div>
+        <div class="value-card">
+          <h4>Confiança</h4>
+          <p>Relações transparentes e duradouras.</p>
+        </div>
+        <div class="value-card">
+          <h4>Inovação</h4>
+          <p>Novas formas de melhorar o cuidado animal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pets Section -->
+  <section class="pets-section">
+    <div class="pets-content">
+      <div class="pets-label">LINHA PET</div>
+      <h2 class="pets-title">Cuidado veterinário para quem divide a casa</h2>
+      <p class="pets-desc">Produtos de saúde e bem-estar para cães, gatos e outros pets, com o mesmo padrão técnico da BenoVet.</p>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='#comprar'">Ver linha pet na loja →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products" id="produtos">
+    <div class="section-header">
+      <h2>Linha de produtos</h2>
+      <p>Uma amostra do que você encontra em nossa loja completa</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">foto do produto</div>
+        <div class="product-info">
+          <div class="product-name">Vermífugo Suíno</div>
+          <div class="product-desc">Amplo espectro, uso oral</div>
+          <div class="product-footer">
+            <div class="product-price">R$ 42,90</div>
+            <div class="product-link">Ver →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">foto do produto</div>
+        <div class="product-info">
+          <div class="product-name">Suplemento Mineral</div>
+          <div class="product-desc">Balde 30kg, uso a campo</div>
+          <div class="product-footer">
+            <div class="product-price">R$ 189,00</div>
+            <div class="product-link">Ver →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">foto do produto</div>
+        <div class="product-info">
+          <div class="product-name">Complexo Vitamínico</div>
+          <div class="product-desc">Injetável, 50ml</div>
+          <div class="product-footer">
+            <div class="product-price">R$ 96,50</div>
+            <div class="product-link">Ver →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">foto do produto</div>
+        <div class="product-info">
+          <div class="product-name">Kit Manejo Sanitário</div>
+          <div class="product-desc">Uso veterinário essencial</div>
+          <div class="product-footer">
+            <div class="product-price">R$ 124,00</div>
+            <div class="product-link">Ver →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box" id="comprar">
+      <div class="cta-content">
+        <h2>Catálogo completo e compra segura</h2>
+        <p>Todos os produtos, formas de pagamento e frete estão disponíveis na nossa loja oficial.</p>
+      </div>
+      <button type="button" class="cta-button">Acessar loja →</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contato">
+    <div>
+      <img src="frontend/assets/logo-benovet.png" alt="BenoVet" class="footer-logo">
+    </div>
+    <div class="footer-section">
+      <h3>Endereço</h3>
+      <p>Rua Paulo Wagner, 449</p>
+      <p>Maripá — PR, Brasil</p>
+      <p>CEP 85955-312</p>
+    </div>
+    <div class="footer-section">
+      <h3>Contato</h3>
+      <a href="mailto:alan@benovet.com.br">alan@benovet.com.br</a>
+      <p>WhatsApp: (45) 99834-6513</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        if (this.getAttribute('href') !== '#comprar') {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // DNA Particle Formation Animation - Precise Version
+    class DNAParticleLogo {
+      constructor(container, imageSrc, options = {}) {
+        this.container = container;
+        this.imageSrc = imageSrc;
+        this.containerWidth = options.size || 130;
+        this.containerHeight = options.size || 130;
+
+        // Exact constants from prototype
+        this.cropX = 0.20;
+        this.cropY = 0.10;
+        this.cropW = 0.58;
+        this.cropH = 0.58;
+
+        this.cycleDuration = 3000;
+        this.formDuration = 1650;
+        this.fadeStart = 2150;
+        this.fadeDuration = this.cycleDuration - this.fadeStart;
+
+        this.maxParticles = 150;
+        this.sampleWidth = 130;
+        this.sampleStep = 2;
+        this.alphaThreshold = 60;
+
+        this.particles = [];
+        this.startTime = performance.now() - Math.random() * this.cycleDuration;
+        this.lastCycle = 0;
+        this.imgShown = false;
+        this.isVisible = true;
+
+        this.setup();
+      }
+
+      shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      setup() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+          this.showStaticImage();
+          return;
+        }
+
+        this.container.style.position = 'relative';
+        this.container.style.overflow = 'visible';
+        this.container.style.width = this.containerWidth + 'px';
+        this.container.style.height = this.containerHeight + 'px';
+
+        // Canvas with retina support
+        const dpr = window.devicePixelRatio || 1;
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = this.containerWidth * dpr;
+        this.canvas.height = this.containerHeight * dpr;
+        this.canvas.style.width = this.containerWidth + 'px';
+        this.canvas.style.height = this.containerHeight + 'px';
+        this.canvas.className = 'dna-particle-canvas';
+        this.canvas.style.position = 'absolute';
+        this.canvas.style.inset = '0';
+        this.canvas.style.zIndex = '2';
+
+        this.ctx = this.canvas.getContext('2d');
+        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Image element
+        this.imageEl = document.createElement('img');
+        this.imageEl.className = 'dna-particle-image';
+        this.imageEl.src = this.imageSrc;
+        this.imageEl.style.position = 'absolute';
+        this.imageEl.style.inset = '0';
+        this.imageEl.style.opacity = '0';
+        this.imageEl.style.zIndex = '1';
+
+        this.container.appendChild(this.canvas);
+        this.container.appendChild(this.imageEl);
+
+        this.imageEl.onload = () => {
+          this.sampleParticles();
+          this.startAnimation();
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            this.isVisible = entry.isIntersecting;
+          });
+        });
+        observer.observe(this.container);
+      }
+
+      sampleParticles() {
+        const w = this.containerWidth;
+        const h = this.containerHeight;
+        const img = this.imageEl;
+
+        // Calculate display dimensions with crop
+        const scale = w / (this.cropW * img.naturalWidth);
+        const dispW = img.naturalWidth * scale;
+        const dispH = img.naturalHeight * scale;
+        const offLeft = -this.cropX * dispW;
+        const offTop = -this.cropY * dispH;
+
+        // Set image positioning
+        this.imageEl.style.width = dispW + 'px';
+        this.imageEl.style.height = dispH + 'px';
+        this.imageEl.style.left = offLeft + 'px';
+        this.imageEl.style.top = offTop + 'px';
+
+        // Sample at fixed width with proportional height
+        const sw = this.sampleWidth;
+        const sh = Math.round(sw * img.naturalHeight / img.naturalWidth);
+
+        const offCanvas = document.createElement('canvas');
+        offCanvas.width = sw;
+        offCanvas.height = sh;
+        const offCtx = offCanvas.getContext('2d');
+        offCtx.drawImage(img, 0, 0, sw, sh);
+
+        const imageData = offCtx.getImageData(0, 0, sw, sh);
+        const data = imageData.data;
+
+        const points = [];
+        for (let y = 0; y < sh; y += this.sampleStep) {
+          for (let x = 0; x < sw; x += this.sampleStep) {
+            const a = data[(y * sw + x) * 4 + 3];
+            if (a > this.alphaThreshold) {
+              points.push({
+                x: offLeft + (x / sw) * dispW,
+                y: offTop + (y / sh) * dispH,
+              });
+            }
+          }
+        }
+
+        // Shuffle, limit to maxParticles, sort by y descending (bottom-up)
+        this.shuffle(points);
+        const targets = points.slice(0, this.maxParticles).sort((a, b) => b.y - a.y);
+
+        this.particles = targets.map((t, i) => ({
+          tx: t.x,
+          ty: t.y,
+          x: t.x + (Math.random() - 0.5) * w * 1.6,
+          y: h + Math.random() * h * 0.8 + 30,
+          delay: (i / targets.length) * 1400,
+          color: t.x < w * 0.5
+            ? (Math.random() > 0.5 ? '0,194,255' : '0,240,255')
+            : (Math.random() > 0.5 ? '123,0,255' : '193,59,255'),
+          r: 1 + Math.random() * 1.3,
+        }));
+      }
+
+      clamp(v, min, max) {
+        return Math.max(min, Math.min(max, v));
+      }
+
+      easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      startAnimation() {
+        const draw = (now) => {
+          if (!this.isVisible) {
+            requestAnimationFrame(draw);
+            return;
+          }
+
+          const elapsed = now - this.startTime;
+          const cycle = Math.floor(elapsed / this.cycleDuration);
+          const t = elapsed - cycle * this.cycleDuration;
+
+          // Reset scatter at new cycle
+          if (cycle !== this.lastCycle) {
+            this.lastCycle = cycle;
+            this.imgShown = false;
+            this.imageEl.style.opacity = '0';
+            this.particles.forEach(p => {
+              p.x = p.tx + (Math.random() - 0.5) * this.containerWidth * 1.6;
+              p.y = this.containerHeight + Math.random() * this.containerHeight * 0.8 + 30;
+            });
+          }
+
+          this.ctx.clearRect(0, 0, this.containerWidth, this.containerHeight);
+
+          this.particles.forEach(p => {
+            const pt = this.clamp((t - p.delay) / this.formDuration, 0, 1);
+            const e = this.easeOutCubic(pt);
+
+            let cx = p.x + (p.tx - p.x) * e;
+            let cy = p.y + (p.ty - p.y) * e;
+            let alpha = 0.15 + 0.85 * e;
+
+            if (t > this.fadeStart) {
+              alpha *= Math.max(0, 1 - (t - this.fadeStart) / this.fadeDuration);
+            }
+
+            this.ctx.beginPath();
+            this.ctx.fillStyle = `rgba(${p.color},${alpha})`;
+            this.ctx.shadowColor = `rgba(${p.color},${Math.min(1, alpha)})`;
+            this.ctx.shadowBlur = 4;
+            this.ctx.arc(cx, cy, p.r, 0, Math.PI * 2);
+            this.ctx.fill();
+          });
+
+          if (!this.imgShown && t >= this.formDuration) {
+            this.imgShown = true;
+            this.imageEl.style.transition = 'opacity 1.2s ease-in-out';
+            this.imageEl.style.opacity = '1';
+          }
+
+          requestAnimationFrame(draw);
+        };
+
+        requestAnimationFrame(draw);
+      }
+
+      showStaticImage() {
+        this.imageEl = document.createElement('img');
+        this.imageEl.src = this.imageSrc;
+        this.imageEl.style.width = '100%';
+        this.imageEl.style.height = '100%';
+        this.imageEl.style.position = 'absolute';
+        this.imageEl.style.inset = '0';
+        this.container.appendChild(this.imageEl);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const navbarSymbol = document.querySelector('.navbar-symbol');
+      if (navbarSymbol && navbarSymbol.querySelector('img')) {
+        const imgSrc = navbarSymbol.querySelector('img').src;
+        navbarSymbol.innerHTML = '';
+        const navLogo = new DNAParticleLogo(navbarSymbol, imgSrc, { size: 40 });
+        navLogo.startTime = performance.now() - Math.random() * navLogo.cycleDuration;
+      }
+
+      const logoSymbol = document.querySelector('.logo-symbol');
+      if (logoSymbol && logoSymbol.querySelector('img')) {
+        const imgSrc = logoSymbol.querySelector('img').src;
+        logoSymbol.innerHTML = '';
+        const aboutLogo = new DNAParticleLogo(logoSymbol, imgSrc, { size: 140 });
+        aboutLogo.startTime = performance.now() - Math.random() * aboutLogo.cycleDuration;
+      }
+    });
+  </script>
+
+</body>
+</html>

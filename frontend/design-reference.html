@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="assets/taina-vinicius-benovit.png" data-resource-id="taina-photo" />
+<meta name="ext-resource-dependency" content="assets/alan-deluan-gust.png" data-resource-id="alan-photo" />
+<template id="__bundler_thumbnail" data-bg-color="#0B0F17">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#0B0F17"/><path d="M80 40 Q100 60 100 80 Q100 100 80 120 Q60 140 60 160" stroke="#00C2FF" stroke-width="6" fill="none"/><path d="M120 40 Q100 60 100 80 Q100 100 120 120 Q140 140 140 160" stroke="#7B00FF" stroke-width="6" fill="none"/></svg>
+</template>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#0B0F17;font-family:'Public Sans',system-ui,sans-serif;}
+  a{color:#00C2FF;}
+  a:hover{color:#5CD9FF;}
+  ::selection{background:#00C2FF;color:#0B0F17;}
+  .bv-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .bv-reveal.bv-in{opacity:1;transform:translateY(0);}
+  .bv-card{transition:transform .25s ease,border-color .25s ease;}
+  .bv-card:hover{transform:translateY(-6px);border-color:rgba(0,194,255,.5);}
+  .bv-cta{transition:transform .2s ease,background .2s ease;}
+  .bv-cta:hover{transform:translateY(-2px);background:#33D0FF;}
+  @media (prefers-reduced-motion: reduce){ .bv-dna-canvas{display:none;} .bv-dna-img{opacity:1 !important;} }
+</style>
+</helmet>
+
+<div data-screen-label="Institutional Home" style="max-width:1440px;margin:0 auto;background:#0B0F17;position:relative;overflow:hidden;">
+
+  <!-- NAV -->
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:24px 40px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;z-index:2;gap:20px 32px;">
+    <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
+      <div ref="{{dnaWrapRef}}" style="position:relative;width:134px;height:202px;flex-shrink:0;overflow:hidden;">
+        <img src="assets/symbol-benovet.png" alt="Símbolo BenoVet" ref="{{dnaImgRef}}" class="bv-dna-img" style="width:100%;height:100%;object-fit:contain;display:block;opacity:0;transition:opacity 1.2s ease;" />
+        <canvas ref="{{dnaCanvasRef}}" class="bv-dna-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+      </div>
+    </div>
+    <nav style="display:flex;flex-wrap:wrap;gap:20px 28px;font:500 20px/1.2 'Public Sans',sans-serif;color:rgba(255,255,255,.72);">
+      <a href="#sobre" style="color:inherit;text-decoration:none;white-space:nowrap;">Quem Somos</a>
+      <a href="#produtos" style="color:inherit;text-decoration:none;white-space:nowrap;">Produtos</a>
+      <a href="#contato" style="color:inherit;text-decoration:none;white-space:nowrap;">Contato</a>
+    </nav>
+    <div class="bv-cta" style="background:#00C2FF;color:#0B0F17;font:600 20px/1 'Public Sans',sans-serif;padding:16px 28px;border-radius:8px;flex-shrink:0;white-space:nowrap;">Comprar na loja</div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;">
+    <img src="assets/hero-animals.png" alt="Suínos, bovinos e equinos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,15,23,.35) 0%,rgba(11,15,23,.15) 100%);"></div>
+    <div class="bv-reveal bv-in" style="position:relative;z-index:1;padding:72px 64px;display:flex;flex-direction:column;gap:20px;max-width:640px;">
+      <div style="display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(0,194,255,.35);color:#00C2FF;font:600 12px/1 'Space Grotesk',sans-serif;padding:7px 14px;border-radius:20px;width:fit-content;letter-spacing:.08em;">CIÊNCIA · SAÚDE · RESULTADOS</div>
+      <div style="font:700 46px/1.15 'Space Grotesk',sans-serif;color:#fff;">Saúde animal com padrão científico</div>
+      <div style="font:400 17px/1.65 'Public Sans',sans-serif;color:rgba(255,255,255,.68);">Tecnologia genética e nutricional aplicada à produtividade e ao bem-estar de suínos, bovinos e equinos. Conheça a linha e finalize sua compra em nossa loja oficial.</div>
+      <div style="display:flex;gap:14px;margin-top:8px;">
+        <div class="bv-cta" style="background:#00C2FF;color:#0B0F17;font:600 15px/1 'Public Sans',sans-serif;padding:16px 26px;border-radius:8px;">Ver loja completa →</div>
+        <a href="#produtos" style="border:1px solid rgba(255,255,255,.25);color:#fff;font:600 15px/1 'Public Sans',sans-serif;padding:16px 26px;border-radius:8px;text-decoration:none;">Conhecer produtos</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE / QUEM SOMOS -->
+  <div id="sobre" style="padding:80px 64px;position:relative;z-index:1;display:flex;flex-direction:column;gap:64px;">
+
+    <div class="bv-reveal" data-bv-reveal="true" style="display:flex;gap:48px;align-items:center;position:relative;">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:640px;position:relative;z-index:2;">
+        <div style="font:700 34px/1.25 'Space Grotesk',sans-serif;color:#fff;">Ciência e gestão a serviço do cuidado animal</div>
+        <div style="font:400 16px/1.75 'Public Sans',sans-serif;color:rgba(255,255,255,.68);">A BenoVet nasceu da união de dois profissionais com experiências complementares e um propósito em comum: contribuir para uma relação mais saudável, responsável e consciente entre as pessoas e seus animais.</div>
+        <div style="font:400 16px/1.75 'Public Sans',sans-serif;color:rgba(255,255,255,.68);">Essa combinação nos permite enxergar o cuidado animal de forma ampla, unindo conhecimento técnico, qualidade, responsabilidade e inovação.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;z-index:1;">
+        <div ref="{{dnaWrapRef2}}" style="position:relative;width:192px;height:288px;flex-shrink:0;overflow:hidden;">
+          <img src="assets/symbol-benovet.png" alt="Símbolo BenoVet" ref="{{dnaImgRef2}}" class="bv-dna-img" style="width:100%;height:100%;object-fit:contain;display:block;opacity:0;transition:opacity 1.2s ease;" />
+          <canvas ref="{{dnaCanvasRef2}}" class="bv-dna-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+        </div>
+        <div style="font:700 88px/1 'Space Grotesk',sans-serif;letter-spacing:.02em;"><span style="color:#fff;">Beno</span><span style="color:#00C2FF;">Vet</span></div>
+      </div>
+    </div>
+
+    <!-- FOUNDERS -->
+    <div class="bv-reveal" data-bv-reveal="true" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <sc-for list="{{founders}}" as="f">
+        <div style="display:flex;gap:20px;padding:28px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:#111826;">
+          <img src="{{f.photo}}" alt="{{f.name}}" style="width:96px;height:96px;border-radius:10px;flex-shrink:0;object-fit:cover;" />
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font:700 18px/1.3 'Space Grotesk',sans-serif;color:#fff;">{{f.name}}</div>
+            <div style="font:600 12px/1.3 'Space Grotesk',sans-serif;color:#00C2FF;letter-spacing:.03em;">{{f.role}}</div>
+            <div style="font:400 14px/1.6 'Public Sans',sans-serif;color:rgba(255,255,255,.6);margin-top:4px;">{{f.bio}}</div>
+            <div style="display:flex;flex-direction:column;gap:2px;margin-top:8px;font:400 13px/1.5 'Public Sans',sans-serif;color:rgba(255,255,255,.5);">
+              <div>{{f.email}}</div>
+              <div>{{f.phone}}</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- MISSION / VISION -->
+    <div class="bv-reveal" data-bv-reveal="true" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+      <div style="padding:28px;border:1px solid rgba(255,255,255,.1);border-radius:12px;">
+        <div style="font:700 18px/1 'Space Grotesk',sans-serif;color:#fff;margin-bottom:12px;">Nossa Missão</div>
+        <div style="font:400 15px/1.7 'Public Sans',sans-serif;color:rgba(255,255,255,.65);">Oferecer produtos e soluções de qualidade para a saúde e o bem-estar animal, proporcionando aos nossos clientes confiança, informação e segurança em suas escolhas.</div>
+      </div>
+      <div style="padding:28px;border:1px solid rgba(255,255,255,.1);border-radius:12px;">
+        <div style="font:700 18px/1 'Space Grotesk',sans-serif;color:#fff;margin-bottom:12px;">Nossa Visão</div>
+        <div style="font:400 15px/1.7 'Public Sans',sans-serif;color:rgba(255,255,255,.65);">Ser uma empresa reconhecida pela qualidade, credibilidade e inovação no mercado de saúde animal, construindo relacionamentos duradouros com clientes, profissionais e parceiros.</div>
+      </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="bv-reveal" data-bv-reveal="true" style="display:flex;flex-direction:column;gap:24px;">
+      <div style="font:700 24px/1 'Space Grotesk',sans-serif;color:#fff;">Nossos Valores</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;">
+        <sc-for list="{{values}}" as="v" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:10px;background:#111826;border:1px solid rgba(255,255,255,.08);">
+            <div style="font:700 14px/1 'Space Grotesk',sans-serif;color:#00C2FF;">{{v.title}}</div>
+            <div style="font:400 13px/1.55 'Public Sans',sans-serif;color:rgba(255,255,255,.6);">{{v.desc}}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- PETS -->
+  <div class="bv-reveal" data-bv-reveal="true" style="position:relative;min-height:520px;display:flex;align-items:center;overflow:hidden;">
+    <img src="assets/pets-section.png" alt="Cães, gatos e outros pets" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,15,23,.35) 0%,rgba(11,15,23,.15) 100%);"></div>
+    <div style="position:relative;z-index:1;padding:72px 64px;display:flex;flex-direction:column;gap:20px;max-width:560px;">
+      <div style="font:600 12px/1 'Space Grotesk',sans-serif;letter-spacing:.1em;color:#00C2FF;">LINHA PET</div>
+      <div style="font:700 38px/1.2 'Space Grotesk',sans-serif;color:#fff;">Cuidado veterinário também para quem divide a casa com você</div>
+      <div style="font:400 16px/1.7 'Public Sans',sans-serif;color:rgba(255,255,255,.68);">Além da linha de produção animal, oferecemos produtos de saúde e bem-estar para cães, gatos e outros pets, com o mesmo padrão técnico e científico da BenoVet.</div>
+      <div style="display:flex;gap:14px;margin-top:8px;">
+        <div class="bv-cta" style="background:#00C2FF;color:#0B0F17;font:600 15px/1 'Public Sans',sans-serif;padding:16px 26px;border-radius:8px;">Ver linha pet na loja →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div id="produtos" class="bv-reveal" data-bv-reveal="true" style="padding:72px 64px;position:relative;">
+    <div style="text-align:center;max-width:600px;margin:0 auto 44px;">
+      <div style="font:700 32px/1.25 'Space Grotesk',sans-serif;color:#fff;">Linha de produtos</div>
+      <div style="font:400 15px/1.6 'Public Sans',sans-serif;color:rgba(255,255,255,.55);margin-top:10px;">Uma amostra do que você encontra em nossa loja completa</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:1;">
+      <sc-for list="{{products}}" as="p" hint-placeholder-count="4">
+        <div class="bv-card" style="border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;background:#111826;">
+          <div style="height:170px;background:repeating-linear-gradient(135deg,rgba(0,194,255,.06),rgba(0,194,255,.06) 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 16px);display:flex;align-items:center;justify-content:center;font:500 11px ui-monospace,monospace;color:rgba(255,255,255,.4);">foto do produto</div>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:8px;">
+            <div style="font:600 15px/1.3 'Public Sans',sans-serif;color:#fff;">{{p.name}}</div>
+            <div style="font:400 13px/1.4 'Public Sans',sans-serif;color:rgba(255,255,255,.5);">{{p.desc}}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;">
+              <div style="font:600 16px/1 'Public Sans',sans-serif;color:#fff;">{{p.price}}</div>
+              <div style="font:600 12px/1 'Space Grotesk',sans-serif;color:#00C2FF;">Ver na loja →</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- CTA NUVEMSHOP -->
+  <div class="bv-reveal" data-bv-reveal="true" style="margin:0 64px 72px;padding:56px 64px;border-radius:16px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;gap:40px;position:relative;isolation:isolate;overflow:hidden;">
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img src="assets/products-bg.png" alt="" style="width:100%;height:100%;object-fit:cover;opacity:1;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,24,38,.35) 0%,rgba(17,24,38,.15) 100%);"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:560px;position:relative;z-index:1;">
+      <div style="font:700 28px/1.3 'Space Grotesk',sans-serif;color:#fff;">Catálogo completo e compra segura na nossa loja online</div>
+      <div style="font:400 15px/1.6 'Public Sans',sans-serif;color:rgba(255,255,255,.6);">Todos os produtos, formas de pagamento e frete calculado estão disponíveis na nossa loja oficial.</div>
+    </div>
+    <div class="bv-cta" style="background:#00C2FF;color:#0B0F17;font:700 15px/1 'Space Grotesk',sans-serif;padding:18px 30px;border-radius:8px;white-space:nowrap;position:relative;z-index:1;">Acessar loja completa →</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="contato" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:48px 64px;border-top:1px solid rgba(255,255,255,.08);position:relative;z-index:1;">
+    <div style="display:flex;flex-direction:column;gap:12px;justify-content:flex-start;">
+      <img src="assets/logo-benovet.png" alt="BenoVet" style="height:342px;width:auto;object-fit:contain;object-position:top left;margin-top:-110px;" />
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font:400 13px/1.9 'Public Sans',sans-serif;color:rgba(255,255,255,.55);">
+      <div style="font:600 13px/1 'Space Grotesk',sans-serif;color:#fff;margin-bottom:2px;letter-spacing:.03em;">ENDEREÇO</div>
+      <div>Rua Paulo Wagner, 449 — Bairro Centro</div>
+      <div>Maripá — PR, Brasil</div>
+      <div>CEP 85955-312</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font:400 13px/1.9 'Public Sans',sans-serif;color:rgba(255,255,255,.55);">
+      <div style="font:600 13px/1 'Space Grotesk',sans-serif;color:#fff;margin-bottom:2px;letter-spacing:.03em;">CONTATO</div>
+      <div>alan@benovet.com.br</div>
+      <div>WhatsApp: (45) 99834-6513</div>
+      <a href="#sobre" style="color:#00C2FF;text-decoration:none;">Quem Somos</a>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.dnaWrapRef = React.createRef();
+    this.dnaImgRef = React.createRef();
+    this.dnaCanvasRef = React.createRef();
+    this.dnaWrapRef2 = React.createRef();
+    this.dnaImgRef2 = React.createRef();
+    this.dnaCanvasRef2 = React.createRef();
+    this._dnaIos = []; this._dnaRafs = []; this._dnaCleanups = [];
+  }
+  componentDidMount() {
+    const els = this.rootEl ? this.rootEl.querySelectorAll('[data-bv-reveal]') : document.querySelectorAll('[data-bv-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('bv-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach((el) => io.observe(el));
+    this._revealIo = io;
+    this.setupDnaAnimation(this.dnaWrapRef, this.dnaImgRef, this.dnaCanvasRef);
+    this.setupDnaAnimation(this.dnaWrapRef2, this.dnaImgRef2, this.dnaCanvasRef2);
+  }
+  componentWillUnmount() {
+    if (this._revealIo) this._revealIo.disconnect();
+    this._dnaIos.forEach((io) => io.disconnect());
+    this._dnaRafs.forEach((raf) => cancelAnimationFrame(raf));
+    this._dnaCleanups.forEach((fn) => fn());
+  }
+  setupDnaAnimation(wrapRef, imgRef, canvasRef) {
+    const wrap = wrapRef.current, img = imgRef.current, canvas = canvasRef.current;
+    if (!wrap || !img || !canvas) return;
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { img.style.opacity = 1; return; }
+    let started = false;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && !started) { started = true; this.runDnaParticles(img, canvas, wrap); io.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    io.observe(wrap);
+    this._dnaIos.push(io);
+  }
+  runDnaParticles(img, canvas, wrap) {
+    const build = () => {
+      const cropX = 0.2, cropY = 0.1, cropW = 0.58, cropH = 0.58;
+      const w = wrap.getBoundingClientRect().width || 180;
+      const h = (wrap.getBoundingClientRect().height) || (img.naturalHeight / img.naturalWidth) * w;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const scale = w / (cropW * img.naturalWidth);
+      const dispW = img.naturalWidth * scale, dispH = img.naturalHeight * scale;
+      const offLeft = -cropX * dispW, offTop = -cropY * dispH;
+      img.style.position = 'absolute';
+      img.style.width = dispW + 'px';
+      img.style.height = dispH + 'px';
+      img.style.left = offLeft + 'px';
+      img.style.top = offTop + 'px';
+      const sw = 130, sh = Math.round(sw * (img.naturalHeight / img.naturalWidth));
+      const off = document.createElement('canvas'); off.width = sw; off.height = sh;
+      const octx = off.getContext('2d'); octx.drawImage(img, 0, 0, sw, sh);
+      let data;
+      try { data = octx.getImageData(0, 0, sw, sh).data; } catch (e) { img.style.opacity = 1; return; }
+      const points = [];
+      for (let y = 0; y < sh; y += 2) {
+        for (let x = 0; x < sw; x += 2) {
+          const idx = (y * sw + x) * 4;
+          if (data[idx + 3] > 60) points.push({ x: offLeft + (x / sw) * dispW, y: offTop + (y / sh) * dispH });
+        }
+      }
+      for (let i = points.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; const t = points[i]; points[i] = points[j]; points[j] = t; }
+      const targets = points.slice(0, Math.min(150, points.length));
+      targets.sort((a, b) => b.y - a.y);
+      const particles = targets.map((t, i) => {
+        const leftSide = t.x < w * 0.5;
+        const color = leftSide ? (Math.random() < 0.5 ? '0,194,255' : '0,240,255') : (Math.random() < 0.5 ? '123,0,255' : '193,59,255');
+        return {
+          tx: t.x, ty: t.y,
+          x: t.x + (Math.random() - 0.5) * w * 1.6,
+          y: h + Math.random() * h * 0.8 + 30,
+          delay: (i / targets.length) * 1400,
+          color, r: 1 + Math.random() * 1.3,
+          phase: Math.random() * Math.PI * 2,
+        };
+      });
+      const mouse = { x: -9999, y: -9999 };
+      const onMove = (e) => { const r = wrap.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; };
+      const onLeave = () => { mouse.x = -9999; mouse.y = -9999; };
+      wrap.addEventListener('mousemove', onMove);
+      wrap.addEventListener('mouseleave', onLeave);
+      this._dnaCleanups.push(() => { wrap.removeEventListener('mousemove', onMove); wrap.removeEventListener('mouseleave', onLeave); });
+      const cycleDuration = 3000, formDuration = 1650, fadeStart = 2150, fadeDuration = cycleDuration - fadeStart;
+      const startTime = performance.now() - Math.random() * cycleDuration;
+      let lastCycle = -1, imgShown = false;
+      const draw = (now) => {
+        const elapsed = now - startTime;
+        const cycle = Math.floor(elapsed / cycleDuration);
+        const t = elapsed - cycle * cycleDuration;
+        if (cycle !== lastCycle) {
+          lastCycle = cycle;
+          particles.forEach((p) => {
+            p.x = p.tx + (Math.random() - 0.5) * w * 1.6;
+            p.y = h + Math.random() * h * 0.8 + 30;
+          });
+        }
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach((p) => {
+          const pt = Math.min(1, Math.max(0, (t - p.delay) / formDuration));
+          const e = 1 - Math.pow(1 - pt, 3);
+          let cx = p.x + (p.tx - p.x) * e;
+          let cy = p.y + (p.ty - p.y) * e;
+          const dx = cx - mouse.x, dy = cy - mouse.y, dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 30) { const push = ((30 - dist) / 30) * 8; cx += (dx / (dist || 1)) * push; cy += (dy / (dist || 1)) * push; }
+          let alpha = 0.15 + 0.85 * e;
+          if (t > fadeStart) alpha *= Math.max(0, 1 - (t - fadeStart) / fadeDuration);
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(${p.color},${alpha})`;
+          ctx.shadowColor = `rgba(${p.color},${Math.min(1, alpha)})`;
+          ctx.shadowBlur = 4;
+          ctx.arc(cx, cy, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        if (!imgShown && t >= formDuration) { imgShown = true; img.style.opacity = '1'; }
+        this._dnaRafs.push(requestAnimationFrame(draw));
+      };
+      this._dnaRafs.push(requestAnimationFrame(draw));
+    };
+    if (img.complete && img.naturalWidth) build(); else img.onload = build;
+  }
+  renderVals() {
+    return {
+      dnaWrapRef: this.dnaWrapRef,
+      dnaImgRef: this.dnaImgRef,
+      dnaCanvasRef: this.dnaCanvasRef,
+      dnaWrapRef2: this.dnaWrapRef2,
+      dnaImgRef2: this.dnaImgRef2,
+      dnaCanvasRef2: this.dnaCanvasRef2,
+      segments: [
+        { name: "SUÍNOS", letter: "S", color: "#00C2FF" },
+        { name: "BOVINOS", letter: "B", color: "#0066FF" },
+        { name: "EQUINOS", letter: "E", color: "#7B00FF" },
+      ],
+      founders: [
+        { name: "Tainã Vinicius Benovit", role: "MÉDICO-VETERINÁRIO", bio: "Responsável pelo conhecimento técnico e pela visão voltada à saúde animal.", photo: (window.__resources && window.__resources['taina-photo']) || "assets/taina-vinicius-benovit.png", email: "taina@benovet.com.br", phone: "(44) 99756-8684" },
+        { name: "Alan Deluan Gust", role: "ENG. AGRÍCOLA E ENG. CIVIL", bio: "Traz experiência em gestão, planejamento, inovação e desenvolvimento de negócios.", photo: (window.__resources && window.__resources['alan-photo']) || "assets/alan-deluan-gust.png", email: "alan@benovet.com.br", phone: "(45) 99834-6513" },
+      ],
+      values: [
+        { title: "Responsabilidade", desc: "Tratamos a saúde animal com seriedade e respeito." },
+        { title: "Qualidade", desc: "Buscamos produtos que atendam aos mais altos padrões." },
+        { title: "Conhecimento", desc: "Boas decisões começam com informação adequada." },
+        { title: "Confiança", desc: "Relações transparentes e duradouras com clientes e parceiros." },
+        { title: "Inovação", desc: "Novas formas de melhorar o cuidado de quem cuida e de quem é cuidado." },
+      ],
+      products: [
+        { name: "Vermífugo Suíno", desc: "Amplo espectro, uso oral", price: "R$ 42,90" },
+        { name: "Suplemento Mineral Bovino", desc: "Balde 30kg, uso a campo", price: "R$ 189,00" },
+        { name: "Complexo Vitamínico Equino", desc: "Injetável, 50ml", price: "R$ 96,50" },
+        { name: "Kit Manejo Sanitário", desc: "Uso veterinário essencial", price: "R$ 124,00" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
