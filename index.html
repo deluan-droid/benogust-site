@@ -673,6 +673,15 @@
       margin-bottom: 14px;
     }
 
+    .product-line-logo {
+      display: none;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto 16px;
+      object-fit: contain;
+    }
+
     .products-grid {
       display: flex;
       flex-direction: column;
@@ -1247,6 +1256,11 @@
         margin-bottom: 16px;
       }
 
+      .product-line:last-child .product-line-logo {
+        display: block;
+        max-width: 240px;
+      }
+
       .products-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1508,6 +1522,11 @@
       .product-line-desc {
         font-size: 13px;
         margin-bottom: 20px;
+      }
+
+      .product-line:last-child .product-line-logo {
+        display: block;
+        max-width: 280px;
       }
 
       .products-grid {
@@ -1855,6 +1874,7 @@
     <div class="product-line">
       <h3 class="product-line-title">BenoPET</h3>
       <p class="product-line-desc">Cães, Gatos, Coelhos, Hamster</p>
+      <img src="frontend/assets/benopet-logo.png" alt="BenoPET" class="product-line-logo">
       <div class="products-grid">
         <div class="product-card">
           <div class="product-image">foto do produto</div>
