@@ -907,6 +907,26 @@
     .footer-section a {
       color: #00C2FF;
       text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-section a:hover {
+      color: #33D0FF;
+    }
+
+    .social-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: rgba(0, 194, 255, 0.1);
+      border: 1px solid rgba(0, 194, 255, 0.3);
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .social-link:hover {
+      background: rgba(0, 194, 255, 0.2);
+      border-color: rgba(0, 194, 255, 0.5);
     }
 
     /* TABLET - 768px+ */
@@ -1482,7 +1502,7 @@
       <li><a href="#produtos">Produtos</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
-    <button type="button" class="navbar-cta" onclick="window.location.href='#comprar'">Comprar na loja</button>
+    <button type="button" class="navbar-cta" onclick="window.location.href='https://benovet.lojavirtualnuvem.com.br/'">Comprar na loja</button>
   </nav>
 
   <!-- Hero Section -->
@@ -1492,7 +1512,7 @@
       <h1 class="hero-title">Saúde animal com padrão científico</h1>
       <p class="hero-subtitle">Tecnologia genética e nutricional aplicada à produtividade e ao bem-estar de suínos, bovinos e equinos. Conheça a linha e finalize sua compra em nossa loja oficial.</p>
       <div class="hero-actions">
-        <button type="button" class="btn btn-primary" onclick="window.location.href='#comprar'">Ver loja completa →</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='https://benovet.lojavirtualnuvem.com.br/'">Ver loja completa →</button>
         <a href="#produtos" class="btn btn-secondary">Conhecer produtos</a>
       </div>
     </div>
@@ -1591,7 +1611,7 @@
       <h2 class="pets-title">Cuidado veterinário para quem divide a casa</h2>
       <p class="pets-desc">Produtos de saúde e bem-estar para cães, gatos e outros pets, com o mesmo padrão técnico da BenoVet.</p>
       <div class="hero-actions">
-        <button type="button" class="btn btn-primary" onclick="window.location.href='#comprar'">Ver linha pet na loja →</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='https://benovet.lojavirtualnuvem.com.br/'">Ver linha pet na loja →</button>
       </div>
     </div>
   </section>
@@ -1678,7 +1698,7 @@
         <h2>Catálogo completo e compra segura</h2>
         <p>Todos os produtos, formas de pagamento e frete estão disponíveis na nossa loja oficial.</p>
       </div>
-      <button type="button" class="cta-button">Acessar loja →</button>
+      <button type="button" class="cta-button" onclick="window.location.href='https://benovet.lojavirtualnuvem.com.br/'">Acessar loja →</button>
     </div>
   </section>
 
@@ -1696,7 +1716,8 @@
     <div class="footer-section">
       <h3>Contato</h3>
       <a href="mailto:alan@benovet.com.br">alan@benovet.com.br</a>
-      <p>WhatsApp: (45) 99834-6513</p>
+      <a href="https://wa.me/5545998346513?text=Olá%20BenoVet" target="_blank" rel="noopener noreferrer" class="social-link">💬 WhatsApp: (45) 99834-6513</a>
+      <a href="https://www.instagram.com/benovet.agro/" target="_blank" rel="noopener noreferrer" class="social-link">📸 Instagram</a>
     </div>
     <div class="footer-section">
       <h3>Legal</h3>
