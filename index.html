@@ -383,6 +383,31 @@
       text-align: center;
     }
 
+    .about-subtitle {
+      font: 400 12px/1.6 "Public Sans", sans-serif;
+      color: #00C2FF;
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .about-section {
+      text-align: center;
+      padding: 16px 0;
+      border-top: 1px solid rgba(0, 194, 255, 0.1);
+    }
+
+    .about-section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .about-section-title {
+      font: 700 16px/1.2 "Space Grotesk", sans-serif;
+      color: #00C2FF;
+      margin-bottom: 8px;
+    }
+
     .about-text p {
       font: 400 12px/1.6 "Public Sans", sans-serif;
       color: rgba(255, 255, 255, 0.75);
@@ -461,27 +486,29 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 24px;
       margin-top: 30px;
       margin-bottom: 30px;
     }
 
     .mv-card {
-      padding: 16px;
-      border: 1px solid rgba(0, 194, 255, 0.15);
-      border-radius: 6px;
-      background: rgba(17, 24, 38, 0.5);
+      text-align: center;
+      padding: 0;
+      border: none;
+      border-top: 1px solid rgba(0, 194, 255, 0.1);
+      background: transparent;
     }
 
     .mv-card h3 {
-      font: 700 13px/1.1 "Space Grotesk", sans-serif;
-      color: #fff;
-      margin-bottom: 8px;
+      font: 700 14px/1.1 "Space Grotesk", sans-serif;
+      color: #00C2FF;
+      margin: 14px 0 12px 0;
+      letter-spacing: 0.05em;
     }
 
     .mv-card p {
-      font: 400 11px/1.5 "Public Sans", sans-serif;
-      color: rgba(255, 255, 255, 0.65);
+      font: 400 12px/1.6 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.75);
     }
 
     /* Values */
@@ -492,7 +519,7 @@
 
     .values-title {
       font: 700 24px/1.2 "Space Grotesk", sans-serif;
-      color: #fff;
+      color: #00C2FF;
       margin-bottom: 24px;
       text-align: center;
     }
@@ -500,27 +527,34 @@
     .values-grid {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .value-card {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       padding: 16px;
-      border-radius: 8px;
-      background: rgba(17, 24, 38, 0.6);
-      border: 1px solid rgba(0, 194, 255, 0.1);
+      border-radius: 0;
+      background: transparent;
+      border: none;
+      border-top: 1px solid rgba(0, 194, 255, 0.1);
+      text-align: center;
+    }
+
+    .value-card:first-child {
+      border-top: none;
     }
 
     .value-card h4 {
       font: 700 14px/1.2 "Space Grotesk", sans-serif;
       color: #00C2FF;
+      margin: 8px 0 0 0;
     }
 
     .value-card p {
-      font: 400 12px/1.5 "Public Sans", sans-serif;
-      color: rgba(255, 255, 255, 0.65);
+      font: 400 12px/1.6 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.75);
     }
 
     /* Pets Section */
@@ -1085,9 +1119,37 @@
         font-size: 12px;
       }
 
+      .about-subtitle {
+        font-size: 13px;
+        margin-bottom: 16px;
+      }
+
+      .about-section {
+        padding: 20px 0;
+      }
+
+      .about-section-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .about-text p {
+        font-size: 13px;
+      }
+
       .mission-vision {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-top: 40px;
+      }
+
+      .mv-card h3 {
+        font-size: 16px;
+      }
+
+      .mv-card p {
+        font-size: 13px;
       }
 
       .values-grid {
@@ -1102,8 +1164,15 @@
       }
 
       .value-card {
-        padding: 18px;
+        padding: 0;
         gap: 8px;
+        border-top: 1px solid rgba(0, 194, 255, 0.1);
+        padding-top: 12px;
+      }
+
+      .value-card:first-child {
+        border-top: none;
+        padding-top: 0;
       }
 
       .value-card h4 {
@@ -1112,6 +1181,7 @@
 
       .value-card p {
         font-size: 13px;
+        line-height: 1.5;
       }
 
       .pets-section {
@@ -1286,10 +1356,41 @@
         margin-top: 12px;
       }
 
+      .about-subtitle {
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+
+      .about-section {
+        padding: 28px 0;
+      }
+
+      .about-section-title {
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+
+      .about-text p {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
       .mission-vision {
         max-width: 1100px;
         margin-left: auto;
         margin-right: auto;
+        gap: 32px;
+        margin-top: 50px;
+      }
+
+      .mv-card h3 {
+        font-size: 18px;
+        margin: 16px 0 14px 0;
+      }
+
+      .mv-card p {
+        font-size: 15px;
+        line-height: 1.8;
       }
 
       .values {
@@ -1308,13 +1409,20 @@
       }
 
       .value-card {
-        padding: 28px;
+        padding: 0;
         gap: 12px;
+        border-top: 1px solid rgba(0, 194, 255, 0.1);
+        padding-top: 16px;
+      }
+
+      .value-card:first-child {
+        border-top: none;
+        padding-top: 0;
       }
 
       .value-card h4 {
         font-size: 18px;
-        margin-bottom: 8px;
+        margin: 8px 0 0 0;
       }
 
       .value-card p {
@@ -1531,9 +1639,24 @@
     </div>
 
     <div class="about-text">
-      <h2 class="about-title">Ciência e gestão a serviço do cuidado animal</h2>
-      <p>A BenoVet nasceu da união de dois profissionais com experiências complementares e um propósito em comum: contribuir para uma relação mais saudável, responsável e consciente entre as pessoas e seus animais.</p>
-      <p>Essa combinação nos permite enxergar o cuidado animal de forma ampla, unindo conhecimento técnico, qualidade, responsabilidade e inovação.</p>
+      <h2 class="about-title">Ciência · Saúde · Resultados</h2>
+      <p class="about-subtitle">Saúde animal com padrão científico</p>
+
+      <div class="about-section">
+        <h3 class="about-section-title">Quem somos</h3>
+        <p>A BenoVet nasceu do encontro entre duas visões que, juntas, fazem sentido no campo: a precisão da engenharia e o conhecimento técnico da medicina veterinária. Fundada por sócios com trajetória em gestão, planejamento e saúde animal, a empresa surgiu para resolver um problema simples de enunciar e difícil de resolver bem — levar ao produtor rural produtos de saúde animal com respaldo científico real, orientação técnica de verdade e a agilidade que o dia a dia da propriedade exige.</p>
+      </div>
+
+      <div class="about-section">
+        <h3 class="about-section-title">Onde estamos</h3>
+        <p>Atuamos com produtores, cooperativas e integrações de suinocultura e bovinocultura, além de tutores de pets e proprietários de equinos, oferecendo uma linha completa que vai do consumidor final ao grande produtor rural. Nossa loja oficial reúne genética, nutrição e sanidade animal em um só lugar, com atendimento técnico e comercial pensado para cada perfil de cliente.</p>
+      </div>
+
+      <div class="about-section">
+        <h3 class="about-section-title">O que fazemos</h3>
+        <p>Trabalhamos com tecnologia genética e nutricional aplicada à produtividade e ao bem-estar de suínos, bovinos e equinos, sempre com orientação e responsabilidade técnica veterinária. Selecionamos fornecedores e marcas com respaldo científico comprovado, e colocamos por trás de cada produto o que consideramos essencial: conhecimento técnico aplicado, relacionamento próximo e compromisso com o resultado do produtor.</p>
+        <p>Porque sabemos que, no campo, saúde animal não é só ciência — é sustento, é trabalho de uma vida, é o resultado que chega até a sua mesa e a sua conta.</p>
+      </div>
     </div>
 
     <!-- Founders -->
@@ -1568,11 +1691,11 @@
     <div class="mission-vision">
       <div class="mv-card">
         <h3>Nossa Missão</h3>
-        <p>Oferecer produtos e soluções de qualidade para a saúde e o bem-estar animal, proporcionando aos nossos clientes confiança, informação e segurança.</p>
+        <p>Nossa missão é levar até o produtor rural, o tutor de pets e o cuidador de equinos produtos e soluções de saúde animal com respaldo científico real. Acreditamos que cada decisão sobre a saúde de um animal carrega peso, seja o sustento de uma propriedade, o resultado de um plantel inteiro ou o bem-estar de quem faz parte da família. Por isso trabalhamos para transformar conhecimento técnico veterinário em produtos confiáveis, orientação clara e suporte próximo, dando a cada cliente a segurança de tomar a melhor decisão para quem está sob seus cuidados.</p>
       </div>
       <div class="mv-card">
         <h3>Nossa Visão</h3>
-        <p>Ser uma empresa reconhecida pela qualidade, credibilidade e inovação no mercado de saúde animal.</p>
+        <p>Queremos ser reconhecidos como a marca em quem produtores, cooperativas, integrações e tutores confiam de olhos fechados. Nossa visão é construir, ano após ano, uma reputação sólida de qualidade, credibilidade e inovação no mercado de saúde animal, estando presentes tanto no dia a dia do pequeno tutor quanto na rotina exigente do grande produtor rural. Acreditamos que crescer de forma consistente é resultado direto da confiança que conquistamos em cada entrega, em cada orientação técnica e em cada relação construída ao longo do tempo.</p>
       </div>
     </div>
 
@@ -1582,23 +1705,23 @@
       <div class="values-grid">
         <div class="value-card">
           <h4>Responsabilidade</h4>
-          <p>Tratamos a saúde animal com seriedade e respeito.</p>
+          <p>Tratamos a saúde animal com a seriedade e o respeito que ela exige. Sabemos que por trás de cada recomendação existe uma vida, um propósito e, muitas vezes, o resultado de um trabalho de meses ou até anos. Por isso assumimos com responsabilidade cada orientação que damos e cada produto que colocamos em nossa linha.</p>
         </div>
         <div class="value-card">
           <h4>Qualidade</h4>
-          <p>Buscamos produtos que atendam aos mais altos padrões.</p>
+          <p>Buscamos e selecionamos produtos que atendam aos mais altos padrões do mercado. Entendemos que a saúde do seu animal, e consequentemente o seu resultado, não podem depender de menos do que o melhor. Por isso avaliamos cuidadosamente cada fornecedor e cada item que chega até você.</p>
         </div>
         <div class="value-card">
           <h4>Conhecimento</h4>
-          <p>Boas decisões começam com informação adequada.</p>
+          <p>Acreditamos que boas decisões começam sempre com informação adequada. Unimos ciência, experiência técnica veterinária e vivência prática de campo para orientar cada escolha com clareza e segurança, ajudando você a entender não só o que comprar, mas por que aquele cuidado faz sentido para o seu animal.</p>
         </div>
         <div class="value-card">
           <h4>Confiança</h4>
-          <p>Relações transparentes e duradouras.</p>
+          <p>Construímos relações transparentes e duradouras com cada cliente, fornecedor e parceiro. Sabemos que confiança não se conquista em um único pedido, mas se constrói todos os dias, na entrega no prazo, no atendimento honesto e no resultado que você vê no seu plantel ou no seu animal de estimação.</p>
         </div>
         <div class="value-card">
           <h4>Inovação</h4>
-          <p>Novas formas de melhorar o cuidado animal.</p>
+          <p>Buscamos constantemente novas formas de melhorar o cuidado animal, unindo tecnologia, ciência e sensibilidade para quem vive do campo e para quem cuida de um animal como parte da família. Estar em busca de inovação é, para nós, uma forma de honrar quem confia diariamente no nosso trabalho.</p>
         </div>
       </div>
     </div>
