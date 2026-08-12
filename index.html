@@ -651,6 +651,28 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
+    .product-line {
+      margin-bottom: 32px;
+    }
+
+    .product-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .product-line-title {
+      font: 700 16px/1.2 "Space Grotesk", sans-serif;
+      color: #00C2FF;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .product-line-desc {
+      font: 400 11px/1.4 "Public Sans", sans-serif;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
     .products-grid {
       display: flex;
       flex-direction: column;
@@ -1211,6 +1233,20 @@
         font-size: 30px;
       }
 
+      .product-line {
+        margin-bottom: 40px;
+      }
+
+      .product-line-title {
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+
+      .product-line-desc {
+        font-size: 12px;
+        margin-bottom: 16px;
+      }
+
       .products-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1458,6 +1494,20 @@
       .section-header h2 {
         font-size: 42px;
         margin-bottom: 50px;
+      }
+
+      .product-line {
+        margin-bottom: 50px;
+      }
+
+      .product-line-title {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+
+      .product-line-desc {
+        font-size: 13px;
+        margin-bottom: 20px;
       }
 
       .products-grid {
@@ -1745,51 +1795,112 @@
       <h2>Linha de produtos</h2>
       <p>Uma amostra do que você encontra em nossa loja completa</p>
     </div>
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-image">foto do produto</div>
-        <div class="product-info">
-          <div class="product-name">Vermífugo Suíno</div>
-          <div class="product-desc">Amplo espectro, uso oral</div>
-          <div class="product-footer">
-            <div class="product-price">R$ 42,90</div>
-            <div class="product-link">Ver →</div>
+
+    <!-- Grandes Animais -->
+    <div class="product-line">
+      <h3 class="product-line-title">Grandes Animais</h3>
+      <p class="product-line-desc">Suínos, Bovinos, Equinos</p>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Vermífugo Suíno</div>
+            <div class="product-desc">Amplo espectro, uso oral</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 42,90</div>
+              <div class="product-link">Ver →</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Suplemento Mineral</div>
+            <div class="product-desc">Balde 30kg, uso a campo</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 189,00</div>
+              <div class="product-link">Ver →</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Complexo Vitamínico</div>
+            <div class="product-desc">Injetável, 50ml</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 96,50</div>
+              <div class="product-link">Ver →</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Kit Manejo Sanitário</div>
+            <div class="product-desc">Uso veterinário essencial</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 124,00</div>
+              <div class="product-link">Ver →</div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="product-card">
-        <div class="product-image">foto do produto</div>
-        <div class="product-info">
-          <div class="product-name">Suplemento Mineral</div>
-          <div class="product-desc">Balde 30kg, uso a campo</div>
-          <div class="product-footer">
-            <div class="product-price">R$ 189,00</div>
-            <div class="product-link">Ver →</div>
+    <!-- BenoPET -->
+    <div class="product-line">
+      <h3 class="product-line-title">BenoPET</h3>
+      <p class="product-line-desc">Cães, Gatos, Coelhos, Hamster</p>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Shampoo Anti-parasitário</div>
+            <div class="product-desc">Cães e gatos, 500ml</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 58,90</div>
+              <div class="product-link">Ver →</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="product-card">
-        <div class="product-image">foto do produto</div>
-        <div class="product-info">
-          <div class="product-name">Complexo Vitamínico</div>
-          <div class="product-desc">Injetável, 50ml</div>
-          <div class="product-footer">
-            <div class="product-price">R$ 96,50</div>
-            <div class="product-link">Ver →</div>
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Ração Premium Cão</div>
+            <div class="product-desc">Digestão sensível, 15kg</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 156,00</div>
+              <div class="product-link">Ver →</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="product-card">
-        <div class="product-image">foto do produto</div>
-        <div class="product-info">
-          <div class="product-name">Kit Manejo Sanitário</div>
-          <div class="product-desc">Uso veterinário essencial</div>
-          <div class="product-footer">
-            <div class="product-price">R$ 124,00</div>
-            <div class="product-link">Ver →</div>
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Snack Dental Gato</div>
+            <div class="product-desc">Higiene bucal, 60g</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 42,00</div>
+              <div class="product-link">Ver →</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">foto do produto</div>
+          <div class="product-info">
+            <div class="product-name">Complexo Vitamínico Pet</div>
+            <div class="product-desc">Pellet, coelho e roedor</div>
+            <div class="product-footer">
+              <div class="product-price">R$ 35,50</div>
+              <div class="product-link">Ver →</div>
+            </div>
           </div>
         </div>
       </div>
