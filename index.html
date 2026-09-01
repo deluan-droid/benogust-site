@@ -115,6 +115,53 @@
             background: #6b2ed9;
         }
 
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: white;
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                width: auto;
+                min-width: 200px;
+                z-index: 100;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                display: block;
+                text-align: left;
+                padding: 10px;
+                color: #2a2a2a;
+            }
+
+            nav a:hover {
+                background: #f0f0f0;
+                border-radius: 4px;
+            }
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, rgba(26, 26, 26, 0.75) 0%, rgba(125, 60, 237, 0.55) 100%),
@@ -932,26 +979,30 @@
                 font-size: 13px;
             }
 
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
+
+            .hero {
+                padding: 60px 20px;
+                min-height: 400px;
             }
 
-            nav {
-                flex-direction: column;
-                width: 100%;
-                gap: 10px;
-            }
-
-            nav a {
-                display: block;
-                text-align: center;
-                padding: 8px;
+            .hero-tagline {
+                font-size: 11px;
+                margin-bottom: 15px;
             }
 
             .hero h1 {
                 font-size: 24px;
                 margin-bottom: 12px;
+            }
+
+            .hero p {
+                font-size: 14px;
+                margin-bottom: 25px;
+            }
+
+            .cta-button {
+                padding: 12px 28px;
+                font-size: 13px;
             }
 
             .section-title {
@@ -1205,12 +1256,13 @@
                     <span>Engenharia & Tecnologia</span>
                 </div>
             </a>
-            <nav>
-                <a href="#inicio">Início</a>
-                <a href="#sobre">Quem Somos</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#projetos">Projetos</a>
-                <a href="#contato" class="nav-cta">Contato</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav id="navbar">
+                <a href="#inicio" onclick="closeMenu()">Início</a>
+                <a href="#sobre" onclick="closeMenu()">Quem Somos</a>
+                <a href="#servicos" onclick="closeMenu()">Serviços</a>
+                <a href="#projetos" onclick="closeMenu()">Projetos</a>
+                <a href="#contato" class="nav-cta" onclick="closeMenu()">Contato</a>
             </nav>
         </div>
     </header>
@@ -1542,6 +1594,25 @@
                 footer.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.remove('active');
+        }
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', function(event) {
+            const navbar = document.getElementById('navbar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (!navbar.contains(event.target) && !menuToggle.contains(event.target)) {
+                navbar.classList.remove('active');
+            }
+        });
 
         // Inicializar carrossel
         updateCarousel();
