@@ -1129,18 +1129,17 @@
             }
         }
 
-        /* Pesquisa Popup - Quadrado */
+        /* Pesquisa Popup - Quadrado com Texto */
         .pesquisa-popup {
             position: fixed;
             bottom: 120px;
             right: 30px;
             background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
-            width: 70px;
-            height: 70px;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 12px;
+            gap: 12px;
+            border-radius: 25px;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
             z-index: 999;
@@ -1148,8 +1147,13 @@
         }
 
         .pesquisa-popup:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6);
+        }
+
+        .pesquisa-popup svg {
+            width: 50px;
+            height: 50px;
         }
 
         .pesquisa-tooltip {
@@ -1163,41 +1167,40 @@
             font-size: 12px;
             font-weight: 600;
             white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .pesquisa-popup:hover .pesquisa-tooltip {
             opacity: 1;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         @media (max-width: 768px) {
             .pesquisa-popup {
                 bottom: 110px;
                 right: 20px;
-                width: 60px;
-                height: 60px;
+                padding: 10px 16px;
+                gap: 10px;
+            }
+
+            .pesquisa-popup svg {
+                width: 40px;
+                height: 40px;
             }
 
             .pesquisa-tooltip {
-                font-size: 11px;
-                padding: 8px 12px;
+                font-size: 12px;
             }
         }
 
-        /* WhatsApp Popup - Quadrado */
+        /* WhatsApp Popup - Retangular com Texto */
         .whatsapp-popup {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 70px;
-            height: 70px;
+            background: #25d366;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 12px;
+            gap: 12px;
+            border-radius: 25px;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
             z-index: 999;
@@ -1205,42 +1208,37 @@
         }
 
         .whatsapp-popup:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
-        .whatsapp-tooltip {
-            position: absolute;
-            bottom: 85px;
-            right: 0;
-            background: #25d366;
-            color: white;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        .whatsapp-popup svg {
+            width: 50px;
+            height: 50px;
         }
 
-        .whatsapp-popup:hover .whatsapp-tooltip {
-            opacity: 1;
+        .whatsapp-tooltip {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
         }
 
         @media (max-width: 768px) {
             .whatsapp-popup {
                 bottom: 20px;
                 right: 20px;
-                width: 60px;
-                height: 60px;
+                padding: 10px 16px;
+                gap: 10px;
+            }
+
+            .whatsapp-popup svg {
+                width: 40px;
+                height: 40px;
             }
 
             .whatsapp-tooltip {
-                font-size: 11px;
-                padding: 8px 12px;
+                font-size: 12px;
             }
         }
     </style>
