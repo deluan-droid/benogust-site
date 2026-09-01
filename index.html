@@ -1129,116 +1129,86 @@
             }
         }
 
-        /* Pesquisa Popup - Quadrado com Texto */
-        .pesquisa-popup {
+        /* Popups - Uniformes */
+        .popup-button {
             position: fixed;
-            bottom: 120px;
-            right: 30px;
-            background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
-            z-index: 999;
-            transition: all 0.3s ease;
-        }
-
-        .pesquisa-popup:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6);
-        }
-
-        .pesquisa-popup svg {
-            width: 50px;
-            height: 50px;
-        }
-
-        .pesquisa-tooltip {
-            position: absolute;
-            bottom: 85px;
-            right: 0;
-            background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
-            color: white;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 1;
-            pointer-events: none;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        @media (max-width: 768px) {
-            .pesquisa-popup {
-                bottom: 110px;
-                right: 20px;
-                padding: 10px 16px;
-                gap: 10px;
-            }
-
-            .pesquisa-popup svg {
-                width: 40px;
-                height: 40px;
-            }
-
-            .pesquisa-tooltip {
-                font-size: 12px;
-            }
-        }
-
-        /* WhatsApp Popup - Retangular com Texto */
-        .whatsapp-popup {
-            position: fixed;
-            bottom: 30px;
             right: 30px;
             background: #25d366;
-            padding: 12px 20px;
+            padding: 14px 22px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-radius: 25px;
+            gap: 14px;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             z-index: 999;
             transition: all 0.3s ease;
-        }
-
-        .whatsapp-popup:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-popup svg {
-            width: 50px;
-            height: 50px;
-        }
-
-        .whatsapp-tooltip {
             color: white;
             font-size: 14px;
             font-weight: 600;
             white-space: nowrap;
+            min-height: 60px;
+        }
+
+        .popup-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-button svg,
+        .popup-icon {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+        }
+
+        .popup-icon {
+            filter: brightness(1.1) contrast(1.2) saturate(1.1);
+        }
+
+        .pesquisa-popup {
+            bottom: 120px;
+            background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+        }
+
+        .pesquisa-popup:hover {
+            box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6);
+        }
+
+        .whatsapp-popup {
+            bottom: 30px;
+            background: #20c449;
+            box-shadow: 0 4px 12px rgba(32, 196, 73, 0.4);
+        }
+
+        .whatsapp-popup:hover {
+            box-shadow: 0 6px 20px rgba(32, 196, 73, 0.6);
         }
 
         @media (max-width: 768px) {
+            .popup-button {
+                right: 20px;
+                padding: 12px 18px;
+                gap: 12px;
+                font-size: 12px;
+            }
+
+            .popup-button svg,
+            .popup-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .pesquisa-popup {
+                bottom: 110px;
+            }
+
             .whatsapp-popup {
                 bottom: 20px;
-                right: 20px;
-                padding: 10px 16px;
-                gap: 10px;
-            }
-
-            .whatsapp-popup svg {
-                width: 40px;
-                height: 40px;
-            }
-
-            .whatsapp-tooltip {
-                font-size: 12px;
             }
         }
     </style>
@@ -1522,31 +1492,19 @@
         </div>
     </div>
 
-    <!-- Pesquisa Popup (Quadrado com Tooltip) -->
-    <div class="pesquisa-popup" onclick="abrirPesquisa()" title="Ei Psicultores, nos ajude a desenvolver essa tecnologia">
-        <svg viewBox="0 0 200 200" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+    <!-- Pesquisa Popup -->
+    <div class="popup-button pesquisa-popup" onclick="abrirPesquisa()">
+        <svg viewBox="0 0 200 200" width="45" height="45" xmlns="http://www.w3.org/2000/svg">
             <circle cx="70" cy="70" r="50" fill="none" stroke="white" stroke-width="12"/>
             <line x1="110" y1="110" x2="160" y2="160" stroke="white" stroke-width="12" stroke-linecap="round"/>
         </svg>
-        <span class="pesquisa-tooltip">Ei Psicultores, nos ajude a desenvolver essa tecnologia</span>
+        <span>Ei Psicultores, nos ajude a desenvolver essa tecnologia</span>
     </div>
 
-    <!-- WhatsApp Popup (Quadrado com Tooltip) -->
-    <div class="whatsapp-popup" onclick="abrirWhatsApp()" title="Clique para falar no WhatsApp">
-        <svg viewBox="0 0 200 200" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
-            <!-- Círculo verde -->
-            <circle cx="100" cy="100" r="95" fill="#25d366"/>
-            <!-- Bolha branca -->
-            <ellipse cx="100" cy="85" rx="48" ry="58" fill="white"/>
-            <!-- Cauda -->
-            <polygon points="65,135 50,165 72,135" fill="white"/>
-            <!-- Checkmark duplo -->
-            <g stroke="#25d366" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 68 95 L 78 105"/>
-                <path d="M 78 95 L 105 122"/>
-            </g>
-        </svg>
-        <span class="whatsapp-tooltip">Clique para falar no WhatsApp</span>
+    <!-- WhatsApp Popup -->
+    <div class="popup-button whatsapp-popup" onclick="abrirWhatsApp()">
+        <img src="Midia/WhatsApp_Logo_PNG_Sem_Fundo_Transparente.png" alt="WhatsApp" class="popup-icon">
+        <span>Clique para falar no WhatsApp</span>
     </div>
 
     <script>
