@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Serviços - BenoGust</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #1A1A1A;
+            background-color: #FFFFFF;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #7D3CED;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #3E3E3E;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: #FFFFFF;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7D3CED, #8B5CF6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: #7D3CED;
+            box-shadow: 0 8px 24px rgba(125, 60, 237, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #7D3CED;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #3E3E3E;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-highlights {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .service-highlights li {
+            font-size: 13px;
+            color: #3E3E3E;
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .service-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #7D3CED;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #7D3CED, #8B5CF6);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(125, 60, 237, 0.4);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: #7D3CED;
+            border: 2px solid #7D3CED;
+        }
+
+        .cta-button-secondary:hover {
+            background: #7D3CED;
+            color: white;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background: rgba(125, 60, 237, 0.1);
+            color: #7D3CED;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .section-header h1 {
+                font-size: 36px;
+            }
+
+            .service-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="services-container">
+        <div class="section-header">
+            <h1>Nossos Serviços</h1>
+            <p>Soluções completas em engenharia, tecnologia e inovação agrícola</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Serviço 1 -->
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Eficiência Energética</h3>
+                <p>Soluções para redução de custos com energia elétrica através de cooperativas especializadas.</p>
+                <ul class="service-highlights">
+                    <li>Economize até 20% na fatura Copel</li>
+                    <li>Sem investimento em infraestrutura</li>
+                    <li>Implementação imediata</li>
+                </ul>
+                <button class="cta-button">Solicitar Orçamento</button>
+            </div>
+
+            <!-- Serviço 2 -->
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Terraplenagem & Escavações</h3>
+                <p>Obra especializada em movimentação de terra para projetos agrícolas e aquícolas.</p>
+                <ul class="service-highlights">
+                    <li>Escavação de viveiros</li>
+                    <li>Tanques de psicultura</li>
+                    <li>Projetos de carcinicultura</li>
+                </ul>
+                <button class="cta-button">Fazer Cotação</button>
+            </div>
+
+            <!-- Serviço 3 -->
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Ensaios Geotécnicos & Topografia</h3>
+                <p>Levantamentos precisos e análises geotécnicas para projetos seguros e eficientes.</p>
+                <ul class="service-highlights">
+                    <li>SPT (Standard Penetration Test)</li>
+                    <li>Georreferenciamento</li>
+                    <li>Demarcação de fundações</li>
+                </ul>
+                <button class="cta-button">Solicitar Levantamento</button>
+            </div>
+
+            <!-- Serviço 4 -->
+            <div class="service-card">
+                <div class="highlight-badge">🆕 Novo!</div>
+                <div class="service-icon">💧</div>
+                <h3>Agroprojetos</h3>
+                <p>Projetos integrados de infraestrutura agrícola com tecnologia de ponta.</p>
+                <ul class="service-highlights">
+                    <li>Sistemas de irrigação</li>
+                    <li>Bombeamento Solar (novo)</li>
+                    <li>Automação (alimentadores, aeradores, monitoramento)</li>
+                    <li>Terraceamento e drenagem agrícola</li>
+                </ul>
+                <button class="cta-button">Conhecer Soluções</button>
+            </div>
+
+            <!-- Serviço 5 -->
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Projetos Civis</h3>
+                <p>Engenharia estrutural em concreto armado, fundações e estruturas metálicas.</p>
+                <ul class="service-highlights">
+                    <li>Estruturas em concreto armado</li>
+                    <li>Fundações robustas</li>
+                    <li>Estruturas metálicas</li>
+                    <li>Projetos personalizados</li>
+                </ul>
+                <button class="cta-button">Solicitar Projeto</button>
+            </div>
+        </div>
+
+        <!-- Seção de Contato/Próximas Ações -->
+        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 2px solid #E5E7EB;">
+            <h2 style="font-size: 32px; color: #1A1A1A; margin-bottom: 12px;">Pronto para começar?</h2>
+            <p style="font-size: 16px; color: #3E3E3E; margin-bottom: 28px;">Entre em contato conosco para uma consulta gratuita.</p>
+            <button class="cta-button" style="max-width: 300px; margin: 0 auto;">
+                Fale Com Um Especialista
+            </button>
+        </div>
+    </div>
+</body>
+</html>

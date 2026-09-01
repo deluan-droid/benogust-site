@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerar Ícones</title>
+</head>
+<body>
+    <h1>Ícones gerados em canvas - Salve as imagens abaixo</h1>
+
+    <h2>Ícone Lupa (Search)</h2>
+    <canvas id="lupaCanvas" width="200" height="200"></canvas>
+    <br><button onclick="baixarLupa()">Baixar Lupa PNG</button>
+
+    <h2>Logo WhatsApp</h2>
+    <canvas id="whatsappCanvas" width="200" height="200"></canvas>
+    <br><button onclick="baixarWhatsApp()">Baixar WhatsApp PNG</button>
+
+    <script>
+        // Desenhar Lupa
+        function desenharLupa() {
+            const canvas = document.getElementById('lupaCanvas');
+            const ctx = canvas.getContext('2d');
+            const size = 200;
+
+            // Fundo transparente
+            ctx.clearRect(0, 0, size, size);
+
+            // Círculo da lupa
+            ctx.strokeStyle = '#1e90ff';
+            ctx.lineWidth = 12;
+            ctx.beginPath();
+            ctx.arc(70, 70, 50, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Handle (bastão da lupa)
+            ctx.strokeStyle = '#1e90ff';
+            ctx.lineWidth = 12;
+            ctx.beginPath();
+            ctx.moveTo(110, 110);
+            ctx.lineTo(160, 160);
+            ctx.stroke();
+        }
+
+        // Desenhar Logo WhatsApp
+        function desenharWhatsApp() {
+            const canvas = document.getElementById('whatsappCanvas');
+            const ctx = canvas.getContext('2d');
+            const size = 200;
+
+            // Fundo transparente
+            ctx.clearRect(0, 0, size, size);
+
+            // Círculo WhatsApp green
+            ctx.fillStyle = '#25d366';
+            ctx.beginPath();
+            ctx.arc(100, 100, 90, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Bolha de chat (branca)
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.ellipse(85, 90, 45, 55, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Cauda da bolha
+            ctx.beginPath();
+            ctx.moveTo(60, 135);
+            ctx.lineTo(50, 160);
+            ctx.lineTo(70, 135);
+            ctx.fill();
+
+            // Checkmark (V duplo)
+            ctx.strokeStyle = '#25d366';
+            ctx.lineWidth = 6;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            // Primeiro V
+            ctx.beginPath();
+            ctx.moveTo(65, 95);
+            ctx.lineTo(75, 105);
+            ctx.stroke();
+
+            // Segundo V
+            ctx.beginPath();
+            ctx.moveTo(75, 95);
+            ctx.lineTo(95, 115);
+            ctx.stroke();
+        }
+
+        function baixarLupa() {
+            desenharLupa();
+            const canvas = document.getElementById('lupaCanvas');
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'lupa.png';
+            link.click();
+        }
+
+        function baixarWhatsApp() {
+            desenharWhatsApp();
+            const canvas = document.getElementById('whatsappCanvas');
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'whatsapp-logo.png';
+            link.click();
+        }
+
+        // Desenhar ao carregar
+        window.addEventListener('load', () => {
+            desenharLupa();
+            desenharWhatsApp();
+        });
+    </script>
+</body>
+</html>
